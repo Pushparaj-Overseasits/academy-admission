@@ -1,0 +1,11 @@
+{
+  "extends": "airbnb",
+  "env": {
+    "browser": true
+  },
+  "rules": {
+    "import/extensions": [ "error", "always", { "ignorePackages": true } ],
+    "linebreak-style": ["error", "windows"],
+    "react/prop-types": "off"
+  }
+}

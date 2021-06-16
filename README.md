@@ -1,0 +1,1 @@
+This is just the basic Architecture of React App Development.
