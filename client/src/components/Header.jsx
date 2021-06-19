@@ -21,7 +21,7 @@ class Header extends React.Component {
               fontSize: '20px',
               width: '80%',
               margin: 'auto',
-              marginTop: '-200px',
+              marginTop: '-14.5%',
               boxShadow: '0px 0px 10px 0px gray',
             }}
             variant="success"
