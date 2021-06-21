@@ -13,7 +13,7 @@ body {
 }
 
 .head {
-  background-color: rgba(2,132,199,1);
+  background-color: rgb(160, 190, 206);
   text-align: center;
   height: 400px;
 }
@@ -29,4 +29,48 @@ div.head h2 {
 
 div.head h5 {
   padding: 2px;
+}
+
+.sidebar {
+  box-shadow: 0px 0px 15px rgba(146, 168, 179, 0.8);
+  padding-right: 0px;
+}
+
+.sidebarCollapse {
+  margin-left: 15px;
+  display: none;
+}
+
+.mainDashboard {
+  padding: 0px;
+}
+
+.top {
+  background-color: rgba(2,132,199,1);
+  height: 400px;
+}
+
+/* All media Queries at same place */
+@media only screen and (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+  .sidebarCollapse {
+    display: revert;
+  }
+}
+
+.sidebarList {
+  list-style: none;
+  padding: 10px;
+  padding-right: 0px;
+}
+
+.sidebarList li {
+  padding: 10px 0px 10px 10px;
+}
+
+.sidebarList li:hover {
+  background-color: rgb(160, 190, 206);
+  cursor: pointer;
 }

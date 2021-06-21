@@ -2,13 +2,14 @@ import 'babel-polyfill';
 import 'whatwg-fetch';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import StudentAdmission from './components/StudentAdmission.jsx';
+// import StudentAdmission from './components/users/StudentAdmission.jsx';
+import DashBoard from './components/DashBoard.jsx';
 
 function App() {
   return (
     <div>
-      {/* <h1>This is Academy Admission</h1> */}
-      <StudentAdmission />
+      {/* <StudentAdmission /> */}
+      <DashBoard />
     </div>
   );
 }
