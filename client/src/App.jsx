@@ -3,7 +3,7 @@ import 'whatwg-fetch';
 import React from 'react';
 import ReactDOM from 'react-dom';
 // import StudentAdmission from './components/users/StudentAdmission.jsx';
-import DashBoard from './components/DashBoard.jsx';
+import DashBoard from './components/admins/DashBoard.jsx';
 
 function App() {
   return (

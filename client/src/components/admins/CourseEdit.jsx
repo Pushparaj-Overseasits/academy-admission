@@ -2,8 +2,10 @@ import React from 'react';
 import {
   Button, Row, Col, Form, Modal,
 } from 'react-bootstrap';
+import { IconButton, Tooltip } from '@material-ui/core';
+import EditIcon from '@material-ui/icons/Edit';
 
-class CourseCreate extends React.Component {
+class CourseEdit extends React.Component {
   constructor(props) {
     super(props);
     this.state = { show: false };
@@ -23,7 +25,11 @@ class CourseCreate extends React.Component {
     const { show } = this.state;
     return (
       <>
-        <Button variant="secondary" onClick={this.handleShow}>Add Course</Button>
+        <Tooltip title="Edit" placement="right">
+          <IconButton>
+            <EditIcon style={{ color: 'green' }} />
+          </IconButton>
+        </Tooltip>
         <Modal show={show} onHide={this.handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Create Course</Modal.Title>
@@ -31,34 +37,34 @@ class CourseCreate extends React.Component {
           <Modal.Body>
             <Form>
               <Form.Group as={Row} controlId="formPlaintextCollegeId">
-                <Form.Label column sm="3">
+                <Form.Label column sm="4">
                   College ID
                 </Form.Label>
-                <Col sm="9">
+                <Col sm="8">
                   <Form.Control type="text" placeholder="Enter College ID" />
                 </Col>
               </Form.Group>
               <Form.Group as={Row} controlId="formPlaintextName">
-                <Form.Label column sm="3">
+                <Form.Label column sm="4">
                   Name
                 </Form.Label>
-                <Col sm="9">
+                <Col sm="8">
                   <Form.Control type="text" placeholder="Enter Course Name" />
                 </Col>
               </Form.Group>
               <Form.Group as={Row} controlId="formPlaintextStatus">
-                <Form.Label column sm="3">
+                <Form.Label column sm="4">
                   Course Status
                 </Form.Label>
-                <Col sm="9">
+                <Col sm="8">
                   <Form.Control type="text" placeholder="Enter Course Status" />
                 </Col>
               </Form.Group>
               <Form.Group as={Row} controlId="formPlaintextType">
-                <Form.Label column sm="3">
+                <Form.Label column sm="4">
                   Course Type
                 </Form.Label>
-                <Col sm="9">
+                <Col sm="8">
                   <Form.Control type="text" placeholder="Enter Course Type" />
                 </Col>
               </Form.Group>
@@ -78,4 +84,4 @@ class CourseCreate extends React.Component {
   }
 }
 
-export default CourseCreate;
+export default CourseEdit;
