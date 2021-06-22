@@ -7,7 +7,7 @@ const PersonalModel = new mongoose.Schema({
   },
   userId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'tblStudent',
+    ref: 'tblstudents',
     required: true,
   },
   fatherName: {
@@ -44,4 +44,4 @@ const PersonalModel = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('tblPersonal', PersonalModel);
+module.exports = mongoose.model('tblpersonals', PersonalModel);

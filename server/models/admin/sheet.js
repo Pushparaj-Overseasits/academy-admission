@@ -7,17 +7,17 @@ const SheetModel = new mongoose.Schema({
   },
   sessionId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'tblSession',
+    ref: 'tblsessions',
     required: true,
   },
   courseId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'tblCourse',
+    ref: 'tblcourses',
     required: true,
   },
   semId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'tblSemester',
+    ref: 'tblsemesters',
     required: true,
   },
   totalSheets: {
@@ -30,4 +30,4 @@ const SheetModel = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('tblSheet', SheetModel);
+module.exports = mongoose.model('tblsheets', SheetModel);

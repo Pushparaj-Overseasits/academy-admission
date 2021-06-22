@@ -7,17 +7,17 @@ const CourSessModel = new mongoose.Schema({
   },
   courseId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'tblCourse',
+    ref: 'tblcourses',
     required: true,
   },
   semId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'tblSemester',
+    ref: 'tblsemesters',
     required: true,
   },
   sessionId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'tblSession',
+    ref: 'tblsessions',
     required: true,
   },
   status: {
@@ -30,4 +30,4 @@ const CourSessModel = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('tblCourSess', CourSessModel);
+module.exports = mongoose.model('tblcoursess', CourSessModel);

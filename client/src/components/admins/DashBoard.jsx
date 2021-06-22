@@ -3,7 +3,7 @@ import {
   Container, Row,
 } from 'react-bootstrap';
 import Sidebar from './Sidebar.jsx';
-import MainContent from './MainContent.jsx';
+import CourseContent from './course/CourseContent.jsx';
 
 class DashBoard extends React.Component {
   constructor(props) {
@@ -26,7 +26,7 @@ class DashBoard extends React.Component {
         <Container fluid>
           <Row sm={sx} xs={sx}>
             <Sidebar visible={style} />
-            <MainContent onClickSidebar={this.onClickSidebar} />
+            <CourseContent onClickSidebar={this.onClickSidebar} />
           </Row>
         </Container>
       </>

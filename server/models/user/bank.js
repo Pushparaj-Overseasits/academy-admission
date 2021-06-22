@@ -7,7 +7,7 @@ const BankModel = new mongoose.Schema({
   },
   userId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'tblStudent',
+    ref: 'tblstudents',
     required: true,
   },
   bankAccount: {
@@ -20,4 +20,4 @@ const BankModel = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('tblBank', BankModel);
+module.exports = mongoose.model('tblbanks', BankModel);

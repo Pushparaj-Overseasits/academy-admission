@@ -7,17 +7,17 @@ const FeeModel = new mongoose.Schema({
   },
   sessionId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'tblSession',
+    ref: 'tblsessions',
     required: true,
   },
   courseId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'tblCourse',
+    ref: 'tblcourses',
     required: true,
   },
   semId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'tblSemester',
+    ref: 'tblsemesters',
     required: true,
   },
   name: {
@@ -34,4 +34,4 @@ const FeeModel = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('tblFee', FeeModel);
+module.exports = mongoose.model('tblfees', FeeModel);

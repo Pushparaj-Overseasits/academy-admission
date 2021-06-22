@@ -7,12 +7,12 @@ const DocumentModel = new mongoose.Schema({
   },
   userId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'tblStudent',
+    ref: 'tblstudents',
     required: true,
   },
   docTypeId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'tblDocumentType',
+    ref: 'tbldocumenttypes',
     required: true,
   },
   url: {
@@ -25,4 +25,4 @@ const DocumentModel = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('tblDocument', DocumentModel);
+module.exports = mongoose.model('tbldocuments', DocumentModel);

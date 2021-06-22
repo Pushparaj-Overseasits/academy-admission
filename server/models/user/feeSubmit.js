@@ -7,7 +7,7 @@ const FeeSubmitModel = new mongoose.Schema({
   },
   addmissionId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'tblAdmission',
+    ref: 'tbladmissions',
     required: true,
   },
   orderId: {
@@ -28,4 +28,4 @@ const FeeSubmitModel = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('tblFeeSubmit', FeeSubmitModel);
+module.exports = mongoose.model('tblfeesubmits', FeeSubmitModel);

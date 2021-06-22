@@ -7,7 +7,7 @@ const SessionModel = new mongoose.Schema({
   },
   clgId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'tblCollege',
+    ref: 'tblcolleges',
     required: true,
   },
   name: {
@@ -20,4 +20,4 @@ const SessionModel = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('tblSession', SessionModel);
+module.exports = mongoose.model('tblsessions', SessionModel);

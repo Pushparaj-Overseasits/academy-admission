@@ -7,7 +7,7 @@ const SubjectTypeModel = new mongoose.Schema({
   },
   clgId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'tblCollege',
+    ref: 'tblcolleges',
     required: true,
   },
   name: {
@@ -28,4 +28,4 @@ const SubjectTypeModel = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('tblSubjecttype', SubjectTypeModel);
+module.exports = mongoose.model('tblsubjecttypes', SubjectTypeModel);

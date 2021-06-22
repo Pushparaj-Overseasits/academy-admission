@@ -7,22 +7,22 @@ const DocMasterModel = new mongoose.Schema({
   },
   docTypeId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'tblDocumentType',
+    ref: 'tbldocumenttypes',
     required: true,
   },
   sessionId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'tblSession',
+    ref: 'tblsessions',
     required: true,
   },
   courseId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'tblCourse',
+    ref: 'tblcourses',
     required: true,
   },
   semId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'tblSemester',
+    ref: 'tblsemesters',
     required: true,
   },
   type: {
@@ -31,4 +31,4 @@ const DocMasterModel = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('tblDocumentMaster', DocMasterModel);
+module.exports = mongoose.model('tbldocumentmasters', DocMasterModel);

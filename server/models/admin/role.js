@@ -19,4 +19,4 @@ const RoleModel = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('tblRole', RoleModel);
+module.exports = mongoose.model('tblroles', RoleModel);

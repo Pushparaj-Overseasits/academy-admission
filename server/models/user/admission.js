@@ -7,22 +7,22 @@ const AdmissionModel = new mongoose.Schema({
   },
   userId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'tblStudent',
+    ref: 'tblstudents',
     required: true,
   },
   sessionId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'tblSession',
+    ref: 'tblsessions',
     required: true,
   },
   courseId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'tblCourse',
+    ref: 'tblcourses',
     required: true,
   },
   semId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'tblSemester',
+    ref: 'tblsemesters',
     required: true,
   },
   date: {
@@ -39,4 +39,4 @@ const AdmissionModel = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('tblAdmission', AdmissionModel);
+module.exports = mongoose.model('tbladmissions', AdmissionModel);
