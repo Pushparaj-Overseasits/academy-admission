@@ -7,7 +7,7 @@ const DocTypeModel = new mongoose.Schema({
   },
   clgId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'tblCollege',
+    ref: 'tblcolleges',
     required: true,
   },
   name: {
@@ -20,4 +20,4 @@ const DocTypeModel = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('tblDocumentType', DocTypeModel);
+module.exports = mongoose.model('tbldocumenttypes', DocTypeModel);

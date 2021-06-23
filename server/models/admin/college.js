@@ -7,7 +7,7 @@ const CollegeModel = new mongoose.Schema({
   },
   userId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'tblStudent',
+    ref: 'tblstudents',
     required: true,
   },
   name: {
@@ -52,4 +52,4 @@ const CollegeModel = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('tblCollege', CollegeModel);
+module.exports = mongoose.model('tblcolleges', CollegeModel);

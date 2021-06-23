@@ -7,7 +7,7 @@ const SemesterModel = new mongoose.Schema({
   },
   clgId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'tblCollege',
+    ref: 'tblcolleges',
     required: true,
   },
   name: {
@@ -24,4 +24,4 @@ const SemesterModel = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('tblSemester', SemesterModel);
+module.exports = mongoose.model('tblsemesters', SemesterModel);

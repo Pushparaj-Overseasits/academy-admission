@@ -7,7 +7,7 @@ const AddressModel = new mongoose.Schema({
   },
   userId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'tblStudent',
+    ref: 'tblstudents',
     required: true,
   },
   state: {
@@ -32,4 +32,4 @@ const AddressModel = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('tblAddress', AddressModel);
+module.exports = mongoose.model('tbladdress', AddressModel);

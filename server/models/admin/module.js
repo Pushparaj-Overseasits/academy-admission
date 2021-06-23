@@ -19,4 +19,4 @@ const ModuleModel = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('tblModule', ModuleModel);
+module.exports = mongoose.model('tblmodules', ModuleModel);

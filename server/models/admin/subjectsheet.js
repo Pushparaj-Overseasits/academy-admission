@@ -7,23 +7,22 @@ const SubjecsheettModel = new mongoose.Schema({
   },
   subId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'tblSubject',
+    ref: 'tblsubjects',
     required: true,
   },
   sessionId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'tblSession',
+    ref: 'tblsessions',
     required: true,
   },
   totalsheet: {
-    type: int,
+    type: Number,
     required: true,
   },
   status: {
     type: String,
     required: true,
   },
-  
 });
 
-module.exports = mongoose.model('tblSubjectsheet', SubjecsheettModel);
+module.exports = mongoose.model('tblsubjectsheets', SubjecsheettModel);

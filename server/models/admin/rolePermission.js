@@ -7,7 +7,7 @@ const RolePermModel = new mongoose.Schema({
   },
   roleId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'tblRole',
+    ref: 'tblroles',
     required: true,
   },
   moduleId: {
@@ -22,4 +22,4 @@ const RolePermModel = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('tblRolePermission', RolePermModel);
+module.exports = mongoose.model('tblrolepermissions', RolePermModel);

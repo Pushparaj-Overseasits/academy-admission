@@ -7,7 +7,7 @@ const ResTypeModel = new mongoose.Schema({
   },
   clgId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'tblCollege',
+    ref: 'tblcolleges',
     required: true,
   },
   name: {
@@ -20,4 +20,4 @@ const ResTypeModel = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('tblResultType', ResTypeModel);
+module.exports = mongoose.model('tblresulttypes', ResTypeModel);

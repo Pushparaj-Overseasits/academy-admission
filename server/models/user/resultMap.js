@@ -7,22 +7,22 @@ const ResMapModel = new mongoose.Schema({
   },
   resultTypeId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'tblResultType',
+    ref: 'tblresulttypes',
     required: true,
   },
   sessionId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'tblSession',
+    ref: 'tblsessions',
     required: true,
   },
   courseId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'tblCourse',
+    ref: 'tblcourses',
     required: true,
   },
   semId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'tblSemester',
+    ref: 'tblsemesters',
     required: true,
   },
   type: {
@@ -31,4 +31,4 @@ const ResMapModel = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('tblResultMap', ResMapModel);
+module.exports = mongoose.model('tblresultmaps', ResMapModel);

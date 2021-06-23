@@ -23,4 +23,4 @@ const UserMasterModel = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('tblUserMaster', UserMasterModel);
+module.exports = mongoose.model('tblusermasters', UserMasterModel);

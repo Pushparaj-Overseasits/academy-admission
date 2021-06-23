@@ -19,4 +19,4 @@ const ActionModel = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('tblAction', ActionModel);
+module.exports = mongoose.model('tblactions', ActionModel);

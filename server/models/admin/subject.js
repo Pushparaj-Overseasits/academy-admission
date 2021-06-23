@@ -7,27 +7,27 @@ const SubjectModel = new mongoose.Schema({
   },
   clgId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'tblCollege',
+    ref: 'tblcolleges',
     required: true,
   },
   courseId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'tblCourse',
+    ref: 'tblcourses',
     required: true,
   },
   semId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'tblSemester',
+    ref: 'tblsemesters',
     required: true,
   },
   typeId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'tblSubjecttype',
+    ref: 'tblsubjecttypes',
     required: true,
   },
   masterid: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'tblSubject',
+    ref: 'tblsubjects',
     required: true,
   },
   subject: {
@@ -38,7 +38,6 @@ const SubjectModel = new mongoose.Schema({
     type: String,
     required: true,
   },
-  
 });
 
-module.exports = mongoose.model('tblSubject', SubjectModel);
+module.exports = mongoose.model('tblsubjects', SubjectModel);

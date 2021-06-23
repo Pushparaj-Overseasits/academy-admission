@@ -7,12 +7,12 @@ const ResDetailModel = new mongoose.Schema({
   },
   userId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'tblStudent',
+    ref: 'tblstudents',
     required: true,
   },
   resultTypeId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'tblResultType',
+    ref: 'tblresulttypes',
     required: true,
   },
   boardUniversity: {
@@ -49,4 +49,4 @@ const ResDetailModel = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('tblResultDetails', ResDetailModel);
+module.exports = mongoose.model('tblresultdetails', ResDetailModel);
