@@ -1,7 +1,9 @@
 const express = require('express');
 require('dotenv').config();
 const mongoose = require('mongoose');
-const router = require('./routers/router');
+const course = require('./routers/course');
+const semester = require('./routers/semester');
+const session = require('./routers/session');
 
 const app = express();
 
@@ -22,7 +24,9 @@ mongoose.connect(DB, {
 
 app.use(express.json());
 
-app.use('/admin', router);
+app.use('/admin/course', course);
+app.use('/admin/semester', semester);
+app.use('/admin/session', session);
 
 app.listen(port, () => {
   console.log(`API server started at port ${port}`);

@@ -49,7 +49,7 @@ const updateCourse = async (req, res) => {
 const deleteCourse = async (req, res) => {
   try {
     const course = await CourseModel.findByIdAndDelete(req.params.id);
-    if (!course) res.status(404).send('No user found');
+    if (!course) res.status(404).send('No such course found');
     res.status(200).send(course);
   } catch (error) {
     res.status(500).send(error);
