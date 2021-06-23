@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const course = require('./routers/course');
 const semester = require('./routers/semester');
 const session = require('./routers/session');
+const courseSession = require('./routers/courseAndSession');
 
 const app = express();
 
@@ -27,6 +28,7 @@ app.use(express.json());
 app.use('/admin/course', course);
 app.use('/admin/semester', semester);
 app.use('/admin/session', session);
+app.use('/admin/course-session', courseSession);
 
 app.listen(port, () => {
   console.log(`API server started at port ${port}`);

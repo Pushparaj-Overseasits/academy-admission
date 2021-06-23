@@ -10,6 +10,9 @@ import FooterAdmin from "components/Footers/FooterAdmin.js";
 
 import Course from "views/admin/Course.js";
 import Sem from "views/admin/Semester.js";
+import Session from "views/admin/Session.js";
+import CourseAndSession from "views/admin/CourseAndSession.js";
+import StudentList from "views/admin/StudentList.js";
 export default function Admin() {
   return (
     <>
@@ -26,6 +29,9 @@ export default function Admin() {
           
             <Route path="/admin2/course" exact component={Course} />
             <Route path="/admin2/sem" exact component={Sem} />
+            <Route path="/admin2/session" exact component={Session} />
+            <Route path="/admin2/course-session" exact component={CourseAndSession} />
+            <Route path="/admin2/student-list" exact component={StudentList} />
           </Switch>
           </div>
           <FooterAdmin />
