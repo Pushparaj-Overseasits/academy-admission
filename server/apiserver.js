@@ -25,6 +25,13 @@ mongoose.connect(DB, {
 
 app.use(express.json());
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  res.header('Access-Control-Allow-Methods', '*');
+  next();
+});
+
 app.use('/admin/course', course);
 app.use('/admin/semester', semester);
 app.use('/admin/session', session);

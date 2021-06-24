@@ -1,7 +1,7 @@
 import React from "react";
 import { createPopper } from "@popperjs/core";
 
-const NotificationDropdown = () => {
+const NotificationDropdown = (props) => {
   // dropdown props
   const [dropdownPopoverShow, setDropdownPopoverShow] = React.useState(false);
   const btnDropdownRef = React.createRef();
@@ -15,6 +15,28 @@ const NotificationDropdown = () => {
   const closeDropdownPopover = () => {
     setDropdownPopoverShow(false);
   };
+  function onDelete(e) {
+    e.preventDefault();
+    (async function() {
+      try {
+        const response = await fetch(`http://localhost:8000/admin/${props.tbl}/${props.id}`, {
+          method: 'DELETE',
+          headers: { "Content-Type": "application/josn" }
+        });
+        const result = await response.json();
+        console.log(result);
+        alert(`${props.tbl} deleted successfully!`);
+        props.update();
+      } catch (error) {
+        console.log(error);
+      }
+    })()
+  }
+  function onUpdate(e) {
+    e.preventDefault();
+    props.onEdit(props.id);
+    console.log(props.id);
+  }
   return (
     <>
       <a
@@ -40,7 +62,7 @@ const NotificationDropdown = () => {
           className={
             "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
           }
-          onClick={(e) => e.preventDefault()}
+          onClick={onUpdate}
         >
           Edit
         </a>
@@ -49,7 +71,7 @@ const NotificationDropdown = () => {
           className={
             "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
           }
-          onClick={(e) => e.preventDefault()}
+          onClick={onDelete}
         >
           Delete
         </a>

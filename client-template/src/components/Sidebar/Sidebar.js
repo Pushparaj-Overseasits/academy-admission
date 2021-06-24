@@ -143,7 +143,7 @@ export default function Sidebar() {
                         : "text-blueGray-300")
                     }
                   ></i>{" "}
-                  Semister
+                  Semester
                 </Link>
               </li>
               <li className="items-center">
@@ -171,16 +171,16 @@ export default function Sidebar() {
                 <Link
                   className={
                     "text-xs uppercase py-3 font-bold block " +
-                    (window.location.href.indexOf("/admin2/course-session") !== -1
+                    (window.location.href.indexOf("/admin2/cour-sess") !== -1
                       ? "text-lightBlue-500 hover:text-lightBlue-600"
                       : "text-blueGray-700 hover:text-blueGray-500")
                   }
-                  to="/admin2/course-session"
+                  to="/admin2/cour-sess"
                 >
                   <i
                     className={
                       "fas fa-tools mr-2 text-sm " +
-                      (window.location.href.indexOf("/admin2/course-session") !== -1
+                      (window.location.href.indexOf("/admin2/cour-sess") !== -1
                         ? "opacity-75"
                         : "text-blueGray-300")
                     }

@@ -1,11 +1,15 @@
 import React from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import {
+  Switch,
+  Route,
+  // Redirect,
+} from "react-router-dom";
 
 // components
 
 import AdminNavbar from "components/Navbars/AdminNavbar.js";
 import Sidebar from "components/Sidebar/Sidebar.js";
-import HeaderStats from "components/Headers/HeaderStats.js";
+// import HeaderStats from "components/Headers/HeaderStats.js";
 import FooterAdmin from "components/Footers/FooterAdmin.js";
 
 import Course from "views/admin/Course.js";
@@ -30,7 +34,7 @@ export default function Admin() {
             <Route path="/admin2/course" exact component={Course} />
             <Route path="/admin2/sem" exact component={Sem} />
             <Route path="/admin2/session" exact component={Session} />
-            <Route path="/admin2/course-session" exact component={CourseAndSession} />
+            <Route path="/admin2/cour-sess" exact component={CourseAndSession} />
             <Route path="/admin2/student-list" exact component={StudentList} />
           </Switch>
           </div>
