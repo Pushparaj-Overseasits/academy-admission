@@ -14,7 +14,6 @@ export default class Add extends React.Component {
     const name = e.target.name;
     const value = e.target.value;
     this.setState({[name]: value});
-    console.log(`${name}: ${value}`);
   }
 
   async createCourse() {

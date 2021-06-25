@@ -8,30 +8,16 @@ import TableDropdown from "components/Dropdowns/TableDropdown.js";
 export default class List extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { sessions: [] };
+    this.onEditId = this.onEditId.bind(this);
   }
 
-  componentDidMount() {
-    this.loadSessions();
-  }
-
-  async loadSessions() {
-    try {
-      const response = await fetch('http://localhost:8000/admin/session/all', {
-        method: 'GET',
-        headers: { "Content-Type": "application/josn" }
-      });
-      const result = await response.json();
-      this.setState({ sessions: result });
-      console.log(result);
-    } catch (error) {
-      console.log(error);
-    }
+  onEditId(value) {
+    this.props.editId(value);
   }
 
   render() {
     const { color } = this.props;
-    const element = this.state.sessions.map((session) => (
+    const element = this.props.sessions.map((session) => (
       <tr key={session.id}>
         <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
          {session.name}
@@ -40,7 +26,7 @@ export default class List extends React.Component {
           <i className="fas fa-circle text-orange-500 mr-2"></i> {session.status}
         </td>
         <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
-          <TableDropdown />
+          <TableDropdown id={session._id} tbl="session" update={this.props.reload} editId={this.onEditId} />
         </td>
       </tr>
     ));

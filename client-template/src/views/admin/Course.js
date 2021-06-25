@@ -28,7 +28,6 @@ export default class Course extends React.Component
       });
       const result = await response.json();
       this.setState({ courses: result });
-      console.log(result);
     } catch (error) {
       console.log(error);
     }
