@@ -30,12 +30,11 @@ const NotificationDropdown = (props) => {
       } catch (error) {
         console.log(error);
       }
-    })()
+    })();
   }
   function onUpdate(e) {
     e.preventDefault();
-    props.onEdit(props.id);
-    console.log(props.id);
+    props.editId(props.id);
   }
   return (
     <>

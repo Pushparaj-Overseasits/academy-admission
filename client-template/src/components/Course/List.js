@@ -8,47 +8,16 @@ import TableDropdown from "components/Dropdowns/TableDropdown.js";
 export default class List extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { courses: [] };
-    this.onUpdate = this.onUpdate.bind(this);
-    this.onEdit = this.onEdit.bind(this);
+    this.onEditId = this.onEditId.bind(this);
   }
 
-  componentDidMount() {
-    this.loadCourses();
-  }
-
-  onUpdate() {
-    this.loadCourses();
-  }
-
-  async loadCourses() {
-    try {
-      const response = await fetch('http://localhost:8000/admin/course/all', {
-        method: 'GET',
-        headers: { "Content-Type": "application/josn" }
-      });
-      const result = await response.json();
-      this.setState({ courses: result });
-      console.log(result);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  onEdit(value) {
-    const { courses } = this.state;
-    for (let i=0; i<courses.length; i++) {
-      if (courses[i]._id === value) {
-        this.props.saveId(courses[i]);
-        console.log(courses[i]);
-        return;
-      }
-    }
+  onEditId(value) {
+    this.props.editId(value);
   }
 
   render() {
     const { color } = this.props;
-    const element = this.state.courses.map((course) => (
+    const element = this.props.courses.map((course) => (
       <tr key={course.id}>
         <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
           {course.name}
@@ -60,7 +29,7 @@ export default class List extends React.Component {
           {course.status}
         </th>
         <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
-          <TableDropdown id={course._id} tbl="course" update={this.onUpdate} onEdit={this.onEdit} />
+          <TableDropdown id={course._id} tbl="course" update={this.props.reload} editId={this.onEditId} />
         </td>
       </tr>
     ));

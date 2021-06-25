@@ -5,11 +5,7 @@ import React from "react";
 export default class Add extends React.Component {
   constructor(props) {
     super(props);
-    const { name, status, type } = this.props.course;
-    // first time undefined is comming
-    // after clicking edit this does not re-render
-    console.log(name, status, type);
-    this.state = { name: name, status: status, type: type };
+    this.state = { id: '', name: '', status: '', type: '' };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSave = this.handleSave.bind(this);
   }
@@ -32,6 +28,41 @@ export default class Add extends React.Component {
       const result = await response.json();
       console.log(result);
       alert('Course Created Successfully!');
+      this.setState({ name: '', status: '', type: '' });
+      this.props.reload();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async loadCourses(id) {
+    try {
+      const response = await fetch(`http://localhost:8000/admin/course/${id}`, {
+        method: 'GET',
+        headers: { "Content-Type": "application/josn" }
+      });
+      const result = await response.json();
+      const { _id, name, status, type } = result;
+      this.setState({ id: _id, name, status, type });
+      this.props.setEditId(0);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async updateCourse() {
+    const { id, name, status, type } = this.state;
+    try {
+      const response = await fetch(`http://localhost:8000/admin/course/${id}`, {
+        method: 'PUT',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: name, status: status, type: type })
+      });
+      const result = await response.json();
+      console.log(result);
+      alert('Course Updated Successfully!');
+      this.setState({ name: '', status: '', type: '' });
+      this.props.reload();
     } catch (error) {
       console.log(error);
     }
@@ -39,10 +70,18 @@ export default class Add extends React.Component {
 
   handleSave(e) {
     e.preventDefault();
-    this.createCourse();
+    if (this.props.add === 'create') { 
+      this.createCourse();
+    }
+    else {
+      this.updateCourse();
+    }
   }
 
   render() {
+    if (this.props.add === 'edit' && this.props.editId) {
+      this.loadCourses(this.props.editId);
+    }
     return (
       <>
         <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">
