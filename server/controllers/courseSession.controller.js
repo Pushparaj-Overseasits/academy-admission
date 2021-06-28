@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
 const CourSessModel = require('../models/admin/courseAndSesison');
+const CourseModel = require('../models/admin/course');
+const SemesterModel = require('../models/admin/semester');
+const SessionModel = require('../models/admin/session');
 
 const getAllCourSess = async (req, res) => {
   try {
@@ -17,7 +20,46 @@ const getById = async (req, res) => {
     if (!CourSess) {
       res.status(404).send('Course and Session not found!');
     }
-    res.status(200).send(CourSess);
+    const {
+      _id, id, courseId, semId, sessionId, status, details,
+    } = CourSess;
+    const CourSessObj = {
+      _id,
+      id,
+      courseId,
+      semId,
+      sessionId,
+      status,
+      details,
+    };
+    const course = await CourseModel.findOne({ id: CourSess.courseId }, 'name', (err, cour) => {
+      if (err) {
+        console.log(err);
+        res.status(500).send(err);
+        return;
+      }
+      console.log(cour);
+    });
+    CourSessObj.courseId = course.name;
+    const semester = await SemesterModel.findOne({ id: CourSess.semId }, 'name', (err, sem) => {
+      if (err) {
+        console.log(err);
+        res.status(500).send(err);
+        return;
+      }
+      console.log(sem);
+    });
+    CourSessObj.semId = semester.name;
+    const session = await SessionModel.findOne({ id: CourSess.sessionId }, 'name', (err, sess) => {
+      if (err) {
+        console.log(err);
+        res.status(500).send(err);
+        return;
+      }
+      console.log(sess);
+    });
+    CourSessObj.sessionId = session.name;
+    res.status(200).send(CourSessObj);
   } catch (error) {
     res.status(500).send(error);
   }
@@ -25,10 +67,34 @@ const getById = async (req, res) => {
 
 const createCourSess = async (req, res) => {
   try {
+    const course = await CourseModel.findOne({ name: req.body.courseId }, 'id', (err, cour) => {
+      if (err) {
+        console.log(err);
+        res.send(500).send(err);
+        return;
+      }
+      console.log(cour);
+    });
+    const semester = await SemesterModel.findOne({ name: req.body.semId }, 'id', (err, sem) => {
+      if (err) {
+        console.log(err);
+        res.send(500).send(err);
+        return;
+      }
+      console.log(sem);
+    });
+    const session = await SessionModel.findOne({ name: req.body.sessionId }, 'id', (err, sess) => {
+      if (err) {
+        console.log(err);
+        res.send(500).send(err);
+        return;
+      }
+      console.log(sess);
+    });
     req.body.id = mongoose.Types.ObjectId();
-    req.body.courseId = '60d1d097cde1257eae5941eb';
-    req.body.semId = '60d1d097cde1257eae5941eb';
-    req.body.sessionId = '60d1d097cde1257eae5941eb';
+    req.body.courseId = course.id;
+    req.body.semId = semester.id;
+    req.body.sessionId = session.id;
     const createdCourSess = new CourSessModel(req.body);
     await createdCourSess.save();
     res.status(200).send(createdCourSess);

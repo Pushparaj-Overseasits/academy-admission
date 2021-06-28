@@ -8,30 +8,16 @@ import TableDropdown from "components/Dropdowns/TableDropdown.js";
 export default class List extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { courseSessions: [] };
+    this.onEditId = this.onEditId.bind(this);
   }
 
-  componentDidMount() {
-    this.loadCourseSessions();
-  }
-
-  async loadCourseSessions() {
-    try {
-      const response = await fetch('http://localhost:8000/admin/course-session/all', {
-        method: 'GET',
-        headers: { "Content-Type": "application/josn" }
-      });
-      const result = await response.json();
-      this.setState({ courseSessions: result });
-      console.log(result);
-    } catch (error) {
-      console.log(error);
-    }
+  onEditId(value) {
+    this.props.editId(value);
   }
 
   render() {
     const { color } = this.props;
-    const element = this.state.courseSessions.map((courseSession) => (
+    const element = this.props.courseSessions.map((courseSession) => (
       <tr key={courseSession.id}>
         <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
           {courseSession.courseId}
@@ -49,7 +35,7 @@ export default class List extends React.Component {
           {courseSession.details}
         </th>
         <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
-          <TableDropdown />
+          <TableDropdown id={courseSession._id} tbl="course-session" update={this.props.reload} editId={this.onEditId} />
         </td>
       </tr>
     ));

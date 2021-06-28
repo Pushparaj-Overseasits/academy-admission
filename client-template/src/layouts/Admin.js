@@ -1,5 +1,5 @@
-import React from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import React, { useState } from "react";
+import { Switch, Route, Redirect, useHistory } from "react-router-dom";
 
 // components
 
@@ -13,6 +13,25 @@ import FooterAdmin from "components/Footers/FooterAdmin.js";
 import Dashboard from "views/admin/Dashboard.js";
 import Course from "views/admin/Course.js";
 export default function Admin() {
+  const history = useHistory();
+  const [auth, setAuth] = useState(false);
+  const authenticate = async (req, res) => {
+    try {
+      const response = await fetch('http://localhost:8000/admin/user-master/auth', {
+        method: 'GET',
+        headers: { "Content-Type": "application/json" },
+        credentials: "include"
+      });
+      const result = await response.json();
+      console.log(result);
+      setAuth(true);
+    } catch (err) {
+      console.log(err);
+      history.push('/auth');
+    }
+  }
+  authenticate();
+  if (!auth) return (<div></div>);
   return (
     <>
       <Sidebar />

@@ -1,6 +1,8 @@
 const express = require('express');
 require('dotenv').config();
 const mongoose = require('mongoose');
+const cookieparser = require('cookie-parser');
+const userMaster = require('./routers/userMaster');
 const course = require('./routers/course');
 const semester = require('./routers/semester');
 const session = require('./routers/session');
@@ -24,14 +26,17 @@ mongoose.connect(DB, {
 });
 
 app.use(express.json());
+app.use(cookieparser());
 
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
   res.header('Access-Control-Allow-Headers', 'Content-Type');
   res.header('Access-Control-Allow-Methods', '*');
+  res.header('Access-Control-Allow-Credentials', 'true');
   next();
 });
 
+app.use('/admin/user-master', userMaster);
 app.use('/admin/course', course);
 app.use('/admin/semester', semester);
 app.use('/admin/session', session);

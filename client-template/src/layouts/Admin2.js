@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Switch,
   Route,
+  useHistory,
   // Redirect,
 } from "react-router-dom";
 
@@ -18,6 +19,25 @@ import Session from "views/admin/Session.js";
 import CourseAndSession from "views/admin/CourseAndSession.js";
 import StudentList from "views/admin/StudentList.js";
 export default function Admin() {
+  const history = useHistory();
+  const [auth, setAuth] = useState(false);
+  const authenticate = async (req, res) => {
+    try {
+      const response = await fetch('http://localhost:8000/admin/user-master/auth', {
+        method: 'GET',
+        headers: { "Content-Type": "application/json" },
+        credentials: "include"
+      });
+      const result = await response.json();
+      console.log(result);
+      setAuth(true);
+    } catch (err) {
+      console.log(err);
+      history.push('/auth');
+    }
+  }
+  authenticate();
+  if (!auth) return (<div></div>);
   return (
     <>
       <Sidebar />

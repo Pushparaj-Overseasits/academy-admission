@@ -14,6 +14,7 @@ export default class Add extends React.Component {
     const name = e.target.name;
     const value = e.target.value;
     this.setState({[name]: value});
+    console.log(`${name}: ${value}`);
   }
 
   async createCourse() {
@@ -128,13 +129,16 @@ export default class Add extends React.Component {
                     >
                       Status
                     </label>
-                    <input
-                      type="email"
+                    <select
                       className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                       name="status"
                       value={this.state.status}
                       onChange={this.handleInputChange}
-                    />
+                    >
+                      <option value="">---Select Status---</option>
+                      <option value="Active">Active</option>
+                      <option value="Inactive">Inactive</option>
+                    </select>
                   </div>
                 </div>
                 <div className="w-full  px-4">
@@ -145,13 +149,16 @@ export default class Add extends React.Component {
                     >
                       Type
                     </label>
-                    <input
-                      type="text"
+                    <select
                       className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                       name="type"
                       value={this.state.type}
                       onChange={this.handleInputChange}
-                    />
+                    >
+                      <option value="">---Select Type---</option>
+                      <option value="Default">Default</option>
+                      <option value="Custom">Custom</option>
+                    </select>
                   </div>
                 </div>
               </div>

@@ -129,7 +129,6 @@ export default class Add extends React.Component {
                     <input
                       type="text"
                       className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                      defaultValue=""
                       name="name"
                       value={this.state.name}
                       onChange={this.handleInputChange}
@@ -144,14 +143,16 @@ export default class Add extends React.Component {
                     >
                       Status
                     </label>
-                    <input
-                      type="email"
+                    <select
                       className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                      defaultValue=""
                       name="status"
                       value={this.state.status}
                       onChange={this.handleInputChange}
-                    />
+                    >
+                      <option value="">---Select Status---</option>
+                      <option value="Active">Active</option>
+                      <option value="Inactive">Inactive</option>
+                    </select>
                   </div>
                 </div>
                
