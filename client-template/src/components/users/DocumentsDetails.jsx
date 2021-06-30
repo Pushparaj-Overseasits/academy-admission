@@ -53,7 +53,7 @@ class DocumentsDetails extends React.Component {
             <Card.Body
               style={{ display: `${display}` }}
             >
-              <Form>
+              <Form encType='multipart/form-data'>
                 <Container fluid>
                   <Row xs={1} sm={1} md={2}>
                     <Col>
@@ -62,7 +62,13 @@ class DocumentsDetails extends React.Component {
                           Adhar Card Number : *
                         </Form.Label>
                         <Col sm="7">
-                          <Form.Control type="text" placeholder="Adhar Card Number" />
+                          <Form.Control
+                            name="adharCardNo"
+                            value={this.props.adharCardNo}
+                            onChange={this.props.handleInputChange}
+                            type="text"
+                            placeholder="Adhar Card Number"
+                          />
                         </Col>
                       </Form.Group>
                     </Col>
@@ -72,7 +78,13 @@ class DocumentsDetails extends React.Component {
                           Election Card Number: *
                         </Form.Label>
                         <Col sm="7">
-                          <Form.Control type="text" placeholder="Election Card Number" />
+                          <Form.Control
+                            name="electionCardNo"
+                            value={this.props.electionCardNo}
+                            onChange={this.props.handleInputChange}
+                            type="text"
+                            placeholder="Election Card Number"
+                          />
                         </Col>
                       </Form.Group>
                     </Col>

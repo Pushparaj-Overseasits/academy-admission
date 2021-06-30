@@ -62,7 +62,13 @@ class CurrentAddress extends React.Component {
                           Village: *
                         </Form.Label>
                         <Col sm="7">
-                          <Form.Control type="text" placeholder="Village Name" />
+                          <Form.Control
+                            name="village"
+                            value={this.props.village}
+                            onChange={this.props.handleInputChange}
+                            type="text"
+                            placeholder="Village Name"
+                          />
                         </Col>
                       </Form.Group>
                     </Col>
@@ -72,7 +78,13 @@ class CurrentAddress extends React.Component {
                           State: *
                         </Form.Label>
                         <Col sm="7">
-                          <Form.Control type="text" placeholder="State" />
+                          <Form.Control
+                            name="currState"
+                            value={this.props.currState}
+                            onChange={this.props.handleInputChange}
+                            type="text"
+                            placeholder="State"
+                          />
                         </Col>
                       </Form.Group>
                     </Col>
@@ -84,7 +96,13 @@ class CurrentAddress extends React.Component {
                           Taluka Name: *
                         </Form.Label>
                         <Col sm="7">
-                          <Form.Control type="text" placeholder="Taluka Name" />
+                          <Form.Control
+                            name="currTaluka"
+                            value={this.props.currTaluka}
+                            onChange={this.props.handleInputChange}
+                            type="text"
+                            placeholder="Taluka Name"
+                          />
                         </Col>
                       </Form.Group>
                     </Col>
@@ -94,7 +112,13 @@ class CurrentAddress extends React.Component {
                           District Name: *
                         </Form.Label>
                         <Col sm="7">
-                          <Form.Control type="text" placeholder="District Name" />
+                          <Form.Control
+                            name="currDistrict"
+                            value={this.props.currDistrict}
+                            onChange={this.props.handleInputChange}
+                            type="text"
+                            placeholder="District Name"
+                          />
                         </Col>
                       </Form.Group>
                     </Col>
@@ -106,7 +130,13 @@ class CurrentAddress extends React.Component {
                           Pin Code: *
                         </Form.Label>
                         <Col sm="7">
-                          <Form.Control type="text" placeholder="Pin Code" />
+                          <Form.Control
+                            name="currPinCode"
+                            value={this.props.currPinCode}
+                            onChange={this.props.handleInputChange}
+                            type="text"
+                            placeholder="Pin Code"
+                          />
                         </Col>
                       </Form.Group>
                     </Col>
@@ -118,7 +148,13 @@ class CurrentAddress extends React.Component {
                           Phone Number: *
                         </Form.Label>
                         <Col sm="7">
-                          <Form.Control type="text" placeholder="Phone Number" />
+                          <Form.Control
+                            name="phone"
+                            value={this.props.phone}
+                            onChange={this.props.handleInputChange}
+                            type="text"
+                            placeholder="Phone Number"
+                          />
                         </Col>
                       </Form.Group>
                     </Col>
@@ -128,7 +164,13 @@ class CurrentAddress extends React.Component {
                           Alternative Number: *
                         </Form.Label>
                         <Col sm="7">
-                          <Form.Control type="text" placeholder="Alternative Number" />
+                          <Form.Control
+                            name="alternate"
+                            value={this.props.alternate}
+                            onChange={this.props.handleInputChange}
+                            type="text"
+                            placeholder="Alternative Number"
+                          />
                         </Col>
                       </Form.Group>
                     </Col>

@@ -53,7 +53,7 @@ class PreviousExamDetails extends React.Component {
             <Card.Body
               style={{ display: `${display}` }}
             >
-              <Form>
+              <Form encType='multipart/form-data'>
                 <Container fluid>
                   <Row xs={1} sm={1} md={2}>
                     <Col>
@@ -62,10 +62,16 @@ class PreviousExamDetails extends React.Component {
                           Board/University: *
                         </Form.Label>
                         <Col sm="7">
-                          <Form.Control as="select">
-                            <option>-- Select Board/University --</option>
-                            <option>Male</option>
-                            <option>Female</option>
+                          <Form.Control
+                            as="select"
+                            name="boardUniversityClg"
+                            value={this.props.boardUniversityClg}
+                            onChange={this.props.handleInputChange}
+                          >
+                            <option value="">-- Select Board/University --</option>
+                            <option value="gujarat board">Gujarat Board</option>
+                            <option value="cbse">CBSE</option>
+                            <option value="icse">ICSE</option>
                           </Form.Control>
                         </Col>
                       </Form.Group>
@@ -76,7 +82,13 @@ class PreviousExamDetails extends React.Component {
                           Subject Name: *
                         </Form.Label>
                         <Col sm="7">
-                          <Form.Control type="text" placeholder="Subject Name" />
+                          <Form.Control
+                            name="subjectName"
+                            value={this.props.subjectName}
+                            onChange={this.props.handleInputChange}
+                            type="text"
+                            placeholder="Subject Name"
+                          />
                         </Col>
                       </Form.Group>
                     </Col>
@@ -88,8 +100,13 @@ class PreviousExamDetails extends React.Component {
                           Exam Name: *
                         </Form.Label>
                         <Col sm="7">
-                          <Form.Control as="select">
-                            <option>-- Select Course --</option>
+                          <Form.Control
+                            as="select"
+                            name="examName"
+                            value={this.props.examName}
+                            onChange={this.handleInputChange}
+                          >
+                            <option value="">-- Select Course --</option>
                           </Form.Control>
                         </Col>
                       </Form.Group>
@@ -100,7 +117,13 @@ class PreviousExamDetails extends React.Component {
                           Seat Number: *
                         </Form.Label>
                         <Col sm="7">
-                          <Form.Control type="text" placeholder="Seat Number" />
+                          <Form.Control
+                            name="seatNoClg"
+                            value={this.props.seatNoClg}
+                            onChange={this.props.handleInputChange}
+                            type="text"
+                            placeholder="Seat Number"
+                          />
                         </Col>
                       </Form.Group>
                     </Col>
@@ -112,7 +135,13 @@ class PreviousExamDetails extends React.Component {
                           Year of Passing: *
                         </Form.Label>
                         <Col sm="7">
-                          <Form.Control type="text" placeholder="Year of Passing (Month/Year)" />
+                          <Form.Control
+                            name="yearOfPassingClg"
+                            value={this.props.yearOfPassingClg}
+                            onChange={this.props.handleInputChange}
+                            type="text"
+                            placeholder="Year of Passing (Month/Year)"
+                          />
                         </Col>
                       </Form.Group>
                     </Col>

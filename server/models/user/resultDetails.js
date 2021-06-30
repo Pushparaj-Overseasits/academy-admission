@@ -25,7 +25,6 @@ const ResDetailModel = new mongoose.Schema({
   },
   Trial: {
     type: Number,
-    required: true,
   },
   yearOfPassing: {
     type: Number,
@@ -33,19 +32,15 @@ const ResDetailModel = new mongoose.Schema({
   },
   schoolName: {
     type: String,
-    required: true,
   },
   totalMarks: {
     type: Number,
-    required: true,
   },
   obtainedMarks: {
     type: Number,
-    required: true,
   },
   percentage: {
     type: Number,
-    required: true,
   },
 });
 

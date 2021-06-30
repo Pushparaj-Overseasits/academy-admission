@@ -10,6 +10,10 @@ const StudentModel = new mongoose.Schema({
     ref: 'tblcolleges',
     required: true,
   },
+  enrollmentNo: {
+    type: String,
+    required: true,
+  },
   name: {
     type: String,
     required: true,
@@ -27,7 +31,7 @@ const StudentModel = new mongoose.Schema({
     required: true,
   },
   dob: {
-    type: Date,
+    type: String,
     required: true,
   },
   cast: {

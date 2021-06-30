@@ -56,7 +56,7 @@ class TwelfthExamDetails extends React.Component {
             <Card.Body
               style={{ display: `${display}` }}
             >
-              <Form>
+              <Form encType='multipart/form-data'>
                 <Container fluid>
                   <Row xs={1} sm={1} md={2}>
                     <Col>
@@ -65,10 +65,16 @@ class TwelfthExamDetails extends React.Component {
                           Board/University: *
                         </Form.Label>
                         <Col sm="7">
-                          <Form.Control as="select">
-                            <option>-- Select Board/University --</option>
-                            <option>Male</option>
-                            <option>Female</option>
+                          <Form.Control
+                            as="select"
+                            name="boardUniversity12"
+                            value={this.props.boardUniversity12}
+                            onChange={this.props.handleInputChange}
+                          >
+                            <option value="">-- Select Board/University --</option>
+                            <option value="gujarat board">Gujarat Board</option>
+                            <option value="cbse">CBSE</option>
+                            <option value="icse">ICSE</option>
                           </Form.Control>
                         </Col>
                       </Form.Group>
@@ -79,7 +85,13 @@ class TwelfthExamDetails extends React.Component {
                           Sear Number: *
                         </Form.Label>
                         <Col sm="7">
-                          <Form.Control type="text" placeholder="Seat Number" />
+                          <Form.Control
+                            name="seatNo12"
+                            value={this.props.seatNo12}
+                            onChange={this.props.handleInputChange}
+                            type="text"
+                            placeholder="Seat Number"
+                          />
                         </Col>
                       </Form.Group>
                     </Col>
@@ -91,8 +103,18 @@ class TwelfthExamDetails extends React.Component {
                           Trial Attempt: *
                         </Form.Label>
                         <Col sm="7">
-                          <Form.Control as="select">
-                            <option>-- Select Trial Attempt --</option>
+                          <Form.Control
+                            name="trialAttemp12"
+                            value={this.props.trialAttemp12}
+                            onChange={this.props.handleInputChange}
+                            as="select"
+                          >
+                            <option value="">-- Select Trial Attempt --</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
                           </Form.Control>
                         </Col>
                       </Form.Group>
@@ -103,7 +125,13 @@ class TwelfthExamDetails extends React.Component {
                           School Name: *
                         </Form.Label>
                         <Col sm="7">
-                          <Form.Control type="text" placeholder="School Name" />
+                          <Form.Control
+                            name="schoolName12"
+                            value={this.props.schoolName12}
+                            onChange={this.props.handleInputChange}
+                            type="text"
+                            placeholder="School Name"
+                          />
                         </Col>
                       </Form.Group>
                     </Col>
@@ -115,7 +143,13 @@ class TwelfthExamDetails extends React.Component {
                           Year of Passing: *
                         </Form.Label>
                         <Col sm="7">
-                          <Form.Control type="text" placeholder="Year of Passing (Month/Year)" />
+                          <Form.Control
+                            name="yearOfPassing12"
+                            value={this.props.yearOfPassing12}
+                            onChange={this.props.handleInputChange}
+                            type="text"
+                            placeholder="Year of Passing (Month/Year)"
+                          />
                         </Col>
                       </Form.Group>
                     </Col>

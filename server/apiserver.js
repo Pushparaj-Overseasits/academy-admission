@@ -2,6 +2,7 @@ const express = require('express');
 require('dotenv').config();
 const mongoose = require('mongoose');
 const cookieparser = require('cookie-parser');
+const admission = require('./routers/admission');
 const userMaster = require('./routers/userMaster');
 const course = require('./routers/course');
 const semester = require('./routers/semester');
@@ -36,6 +37,7 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use('/admission', admission);
 app.use('/admin/user-master', userMaster);
 app.use('/admin/course', course);
 app.use('/admin/semester', semester);

@@ -62,7 +62,14 @@ class PermanentAddress extends React.Component {
                           Address: *
                         </Form.Label>
                         <Col sm="7">
-                          <Form.Control type="text" placeholder="Address" />
+                          <Form.Control
+                            name="address"
+                            value={this.props.addres
+                              }
+                            onChange={this.props.handleInputChange}
+                            type="text"
+                            placeholder="Address"
+                          />
                         </Col>
                       </Form.Group>
                     </Col>
@@ -72,7 +79,13 @@ class PermanentAddress extends React.Component {
                           State: *
                         </Form.Label>
                         <Col sm="7">
-                          <Form.Control type="text" placeholder="State" />
+                          <Form.Control
+                            name="permState"
+                            value={this.props.permState}
+                            onChange={this.props.handleInputChange}
+                            type="text"
+                            placeholder="State"
+                          />
                         </Col>
                       </Form.Group>
                     </Col>
@@ -84,7 +97,13 @@ class PermanentAddress extends React.Component {
                           Taluka Name: *
                         </Form.Label>
                         <Col sm="7">
-                          <Form.Control type="text" placeholder="Taluka Name" />
+                          <Form.Control
+                            name="permTaluka"
+                            value={this.props.permTaluka}
+                            onChange={this.props.handleInputChange}
+                            type="text"
+                            placeholder="Taluka Name"
+                          />
                         </Col>
                       </Form.Group>
                     </Col>
@@ -94,7 +113,13 @@ class PermanentAddress extends React.Component {
                           District Name: *
                         </Form.Label>
                         <Col sm="7">
-                          <Form.Control type="text" placeholder="District Name" />
+                          <Form.Control
+                            name="permDistrict"
+                            value={this.props.permDistrict}
+                            onChange={this.props.handleInputChange}
+                            type="text"
+                            placeholder="District Name"
+                          />
                         </Col>
                       </Form.Group>
                     </Col>
@@ -106,7 +131,13 @@ class PermanentAddress extends React.Component {
                           Pin Code: *
                         </Form.Label>
                         <Col sm="7">
-                          <Form.Control type="text" placeholder="Pin Code" />
+                          <Form.Control
+                            name="permPinCode"
+                            value={this.props.permPinCode}
+                            onChange={this.props.handleInputChange}
+                            type="text"
+                            placeholder="Pin Code"
+                          />
                         </Col>
                       </Form.Group>
                     </Col>
@@ -116,7 +147,13 @@ class PermanentAddress extends React.Component {
                           Email: *
                         </Form.Label>
                         <Col sm="7">
-                          <Form.Control type="text" placeholder="Email" />
+                          <Form.Control
+                            name="email"
+                            value={this.props.email}
+                            onChange={this.props.handleInputChange}
+                            type="text"
+                            placeholder="Email"
+                          />
                         </Col>
                       </Form.Group>
                     </Col>

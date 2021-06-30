@@ -36,7 +36,6 @@ const PersonalModel = new mongoose.Schema({
   },
   isMarried: {
     type: Boolean,
-    required: true,
   },
   motherTongue: {
     type: String,

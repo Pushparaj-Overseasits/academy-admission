@@ -10,7 +10,7 @@ import IconButton from '@material-ui/core/IconButton';
 class Course extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { display: 'block' };
+    this.state = { display: 'block', sessions: [], courses: [] };
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -21,6 +21,37 @@ class Course extends React.Component {
     });
   }
 
+  componentDidMount() {
+    this.loadSession();
+    this.loadCourse();
+  }
+
+  async loadSession() {
+    try {
+      const response = await fetch('http://localhost:8000/admin/session/all', {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }
+      });
+      const result = await response.json();
+      this.setState({ sessions: result });
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  async loadCourse() {
+    try {
+      const response = await fetch('http://localhost:8000/admin/course/all', {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }
+      });
+      const result = await response.json();
+      this.setState({ courses: result });
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   render() {
     const { display } = this.state;
     let element;
@@ -29,6 +60,12 @@ class Course extends React.Component {
     } else {
       element = <RemoveIcon />;
     }
+    const sessions = this.state.sessions.map((session) => (
+      <option key={session.id} value={session.id}>{session.name}</option>
+    ));
+    const courses = this.state.courses.map((course) => (
+      <option key={course.id} value={course.id}>{course.name}</option>
+    ));
     return (
       <>
         <div>
@@ -59,8 +96,14 @@ class Course extends React.Component {
                     Apply For Session: *
                   </Form.Label>
                   <Col sm="9">
-                    <Form.Control as="select">
-                      <option>June 2020-2021</option>
+                    <Form.Control
+                      name="sessionId"
+                      value={this.props.sesionId}
+                      as="select"
+                      onChange={this.props.handleInputChange}
+                    >
+                      <option value=''>--- Select Session ---</option>
+                      {sessions}
                     </Form.Control>
                   </Col>
                 </Form.Group>
@@ -69,8 +112,14 @@ class Course extends React.Component {
                     Apply For Course: *
                   </Form.Label>
                   <Col sm="9">
-                    <Form.Control as="select">
-                      <option>B.A. Sem 3</option>
+                    <Form.Control
+                      name="courseId"
+                      value={this.props.courseId}
+                      as="select"
+                      onChange={this.props.handleInputChange}
+                    >
+                      <option value=''>--- Select Course ---</option>
+                      {courses}
                     </Form.Control>
                   </Col>
                 </Form.Group>
@@ -79,7 +128,13 @@ class Course extends React.Component {
                     Enrollement Number: *
                   </Form.Label>
                   <Col sm="9">
-                    <Form.Control type="text" placeholder="Enter your enrollment number" />
+                    <Form.Control
+                      name="enrollmentNo"
+                      type="text"
+                      placeholder="Enter your enrollment number"
+                      value={this.props.enrollmentNo}
+                      onChange={this.props.handleInputChange}
+                    />
                   </Col>
                 </Form.Group>
               </Form>

@@ -1,4 +1,5 @@
-import React from 'react';
+
+  import React from 'react';
 import {
   Card, Form, Row, Col, Container,
 } from 'react-bootstrap';
@@ -53,7 +54,7 @@ class BankAccountDetails extends React.Component {
             <Card.Body
               style={{ display: `${display}` }}
             >
-              <Form>
+              <Form encType='multipart/form-data'>
                 <Container fluid>
                   <Row xs={1} sm={1} md={2}>
                     <Col>
@@ -62,7 +63,13 @@ class BankAccountDetails extends React.Component {
                           Bank A/C No. : *
                         </Form.Label>
                         <Col sm="7">
-                          <Form.Control type="text" placeholder="Bank Account Number" />
+                          <Form.Control
+                            name="bankACNo"
+                            value={this.props.bankACNo}
+                            onChange={this.props.handleInputChange}
+                            type="text"
+                            placeholder="Bank Account Number"
+                          />
                         </Col>
                       </Form.Group>
                     </Col>
@@ -72,7 +79,13 @@ class BankAccountDetails extends React.Component {
                           Branch Name: *
                         </Form.Label>
                         <Col sm="7">
-                          <Form.Control type="text" placeholder="Bank Branch Name" />
+                          <Form.Control
+                            name="branchName"
+                            value={this.props.branchName}
+                            onChange={this.props.handleInputChange}
+                            type="text"
+                            placeholder="Bank Branch Name"
+                          />
                         </Col>
                       </Form.Group>
                     </Col>

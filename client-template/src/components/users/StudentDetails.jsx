@@ -53,7 +53,7 @@ class StudentDetails extends React.Component {
             <Card.Body
               style={{ display: `${display}` }}
             >
-              <Form>
+              <Form encType='multipart/form-data'>
                 <Container fluid>
                   <Row xs={1} sm={1} md={2}>
                     <Col>
@@ -62,10 +62,15 @@ class StudentDetails extends React.Component {
                           Gender: *
                         </Form.Label>
                         <Col sm="7">
-                          <Form.Control as="select">
-                            <option>-- Select Gender --</option>
-                            <option>Male</option>
-                            <option>Female</option>
+                          <Form.Control
+                            value={this.props.gender}
+                            onChange={this.props.handleInputChange}
+                            name="gender"
+                            as="select"
+                          >
+                            <option value="">-- Select Gender --</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
                           </Form.Control>
                         </Col>
                       </Form.Group>
@@ -76,7 +81,13 @@ class StudentDetails extends React.Component {
                           Surname: *
                         </Form.Label>
                         <Col sm="7">
-                          <Form.Control type="text" placeholder="Sur Name" />
+                          <Form.Control
+                            value={this.props.surName}
+                            onChange={this.props.handleInputChange}
+                            name="surName"
+                            type="text"
+                            placeholder="Sur Name"
+                          />
                         </Col>
                       </Form.Group>
                     </Col>
@@ -88,7 +99,13 @@ class StudentDetails extends React.Component {
                           First Name: *
                         </Form.Label>
                         <Col sm="7">
-                          <Form.Control type="text" placeholder="First Name" />
+                          <Form.Control
+                            value={this.props.firstName}
+                            onChange={this.props.handleInputChange}
+                            name="firstName"
+                            type="text"
+                            placeholder="First Name"
+                          />
                         </Col>
                       </Form.Group>
                     </Col>
@@ -98,7 +115,13 @@ class StudentDetails extends React.Component {
                           Father Name: *
                         </Form.Label>
                         <Col sm="7">
-                          <Form.Control type="text" placeholder="Father Name" />
+                          <Form.Control
+                            value={this.props.fatherName}
+                            onChange={this.props.handleInputChange}
+                            name="fatherName"
+                            type="text"
+                            placeholder="Father Name"
+                          />
                         </Col>
                       </Form.Group>
                     </Col>
@@ -110,7 +133,13 @@ class StudentDetails extends React.Component {
                           Mother Name: *
                         </Form.Label>
                         <Col sm="7">
-                          <Form.Control type="text" placeholder="Mother Name" />
+                          <Form.Control
+                            value={this.props.motherName}
+                            onChange={this.props.handleInputChange}
+                            name="motherName"
+                            type="text"
+                            placeholder="Mother Name"
+                          />
                         </Col>
                       </Form.Group>
                     </Col>
@@ -120,7 +149,13 @@ class StudentDetails extends React.Component {
                           GrandFather Name: *
                         </Form.Label>
                         <Col sm="7">
-                          <Form.Control type="text" placeholder="Grand Father Name" />
+                          <Form.Control
+                            value={this.props.grandFatherName}
+                            onChange={this.props.handleInputChange}
+                            name="grandFatherName"
+                            type="text"
+                            placeholder="Grand Father Name"
+                          />
                         </Col>
                       </Form.Group>
                     </Col>

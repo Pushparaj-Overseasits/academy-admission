@@ -53,7 +53,7 @@ class PersonalDetails extends React.Component {
             <Card.Body
               style={{ display: `${display}` }}
             >
-              <Form>
+              <Form encType='multipart/form-data'>
                 <Container fluid>
                   <Row xs={1} sm={1} md={2}>
                     <Col>
@@ -62,7 +62,13 @@ class PersonalDetails extends React.Component {
                           Date Of Birth: *
                         </Form.Label>
                         <Col sm="7">
-                          <Form.Control type="text" placeholder="Date Of Birth (DD-MM-YYYY)" />
+                          <Form.Control
+                            name="dateOfBirth"
+                            value={this.props.dateOdBirth}
+                            onChange={this.props.handleInputChange}
+                            type="text"
+                            placeholder="Date Of Birth (DD-MM-YYYY)"
+                          />
                         </Col>
                       </Form.Group>
                     </Col>
@@ -89,7 +95,13 @@ class PersonalDetails extends React.Component {
                           Religious: *
                         </Form.Label>
                         <Col sm="7">
-                          <Form.Control type="text" placeholder="Religious" />
+                          <Form.Control
+                            name="religion"
+                            value={this.props.religion}
+                            onChange={this.props.handleInputChange}
+                            type="text"
+                            placeholder="Religious"
+                          />
                         </Col>
                       </Form.Group>
                     </Col>
@@ -99,7 +111,13 @@ class PersonalDetails extends React.Component {
                           Nationality: *
                         </Form.Label>
                         <Col sm="7">
-                          <Form.Control type="text" placeholder="Nationality" />
+                          <Form.Control
+                            name="nationality"
+                            value={this.props.nationality}
+                            onChange={this.props.handleInputChange}
+                            type="text"
+                            placeholder="Nationality"
+                          />
                         </Col>
                       </Form.Group>
                     </Col>
@@ -111,8 +129,17 @@ class PersonalDetails extends React.Component {
                           Select Cast: *
                         </Form.Label>
                         <Col sm="7">
-                          <Form.Control as="select">
-                            <option>-- Select Cast --</option>
+                          <Form.Control
+                            as="select"
+                            name="cast"
+                            value={this.props.cast}
+                            onChange={this.props.handleInputChange}
+                          >
+                            <option value="">-- Select Cast --</option>
+                            <option value="general">General</option>
+                            <option value="obc">OBC</option>
+                            <option value="sc">SC</option>
+                            <option value="st">ST</option>
                           </Form.Control>
                         </Col>
                       </Form.Group>
@@ -123,9 +150,13 @@ class PersonalDetails extends React.Component {
                           Select Status: *
                         </Form.Label>
                         <Col sm="7">
-                          <Form.Control as="select">
-                            <option>-- Select Status --</option>
-                          </Form.Control>
+                          <Form.Control
+                            name="status"
+                            value={this.props.status}
+                            onChange={this.props.handleInputChange}
+                            type="text"
+                            placeholder="Status"
+                          />
                         </Col>
                       </Form.Group>
                     </Col>
@@ -137,10 +168,15 @@ class PersonalDetails extends React.Component {
                           BPL Card: *
                         </Form.Label>
                         <Col sm="7">
-                          <Form.Control as="select">
-                            <option>-- You have BPL Card --</option>
-                            <option>Yes</option>
-                            <option>No</option>
+                          <Form.Control
+                            as="select"
+                            name="bpl"
+                            value={this.props.bpl}
+                            onChange={this.props.handleInputChange}
+                          >
+                            <option value="">-- You have BPL Card --</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
                           </Form.Control>
                         </Col>
                       </Form.Group>
@@ -151,7 +187,13 @@ class PersonalDetails extends React.Component {
                           Mother Tongue: *
                         </Form.Label>
                         <Col sm="7">
-                          <Form.Control type="text" placeholder="Mother Tongue" />
+                          <Form.Control
+                            name="motherTongue"
+                            value={this.props.motherTongue}
+                            onChange={this.props.handleInputChange}
+                            type="text"
+                            placeholder="Mother Tongue"
+                          />
                         </Col>
                       </Form.Group>
                     </Col>
@@ -163,7 +205,13 @@ class PersonalDetails extends React.Component {
                           Annual Income: *
                         </Form.Label>
                         <Col sm="7">
-                          <Form.Control type="text" placeholder="Annual Income" />
+                          <Form.Control
+                            name="annualIncome"
+                            value={this.props.annualIncome}
+                            onChange={this.props.handleInputChange}
+                            type="text"
+                            placeholder="Annual Income"
+                          />
                         </Col>
                       </Form.Group>
                     </Col>
@@ -173,10 +221,15 @@ class PersonalDetails extends React.Component {
                           You Handicap ?: *
                         </Form.Label>
                         <Col sm="7">
-                          <Form.Control as="select">
-                            <option>-- You Handicap ? --</option>
-                            <option>Yes</option>
-                            <option>No</option>
+                          <Form.Control
+                            name="handicap"
+                            value={this.props.handicap}
+                            onChange={this.props.handleInputChange}
+                            as="select"
+                          >
+                            <option value="">-- You Handicap ? --</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
                           </Form.Control>
                         </Col>
                       </Form.Group>

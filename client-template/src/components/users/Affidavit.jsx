@@ -18,7 +18,7 @@ class Affidavit extends React.Component {
             }}
           >
             <Card.Body>
-              <Form>
+              <Form encType='multipart/form-data'>
                 <Form.Group as={Row}>
                   <Form.Label column sm="2">
                     Affidavit:
@@ -36,13 +36,24 @@ class Affidavit extends React.Component {
                   </Col>
                 </Form.Group>
                 <Form.Group controlId="formBasicCheckbox">
-                  <Form.Check inline type="checkbox" label="Agree to Terms and Conditions" />
+                  <Form.Check
+                    inline
+                    name="acceptTermsConditions"
+                    checked={this.props.acceptTermsConditions}
+                    onChange={this.props.handleInputChange}
+                    type="checkbox"
+                    label="Agree to Terms and Conditions"
+                  />
                   {'| '}
                   <Card.Link>
                     Read Before Accept.
                   </Card.Link>
                 </Form.Group>
-                <Button block variant="primary" type="submit">
+                <Button block
+                  variant="primary"
+                  type="submit"
+                  onClick={this.props.saveAdmissionData}
+                >
                   Submit
                 </Button>
               </Form>
