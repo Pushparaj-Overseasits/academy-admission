@@ -6,11 +6,42 @@ import { Modal } from "react-bootstrap";
 export default class Add extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { show: false, id: '', courseId: '', semId: '', sessionId: '', status: '', details: '' };
+    this.state = {
+      show: false, id: '', courseId: '', semId: '', sessionId: '', status: '', details: '',
+      courses: [], semesters: [], sessions: [],
+    };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSave = this.handleSave.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleShow = this.handleShow.bind(this);
+  }
+
+  componentDidMount() {
+    this.loadDropdown();
+  }
+
+  async loadDropdown() {
+    try {
+      const resCour = await fetch ('http://localhost:8000/admin/course/all', {
+        method: 'GET',
+        headers: { "Content-Type": "application/josn" }
+      });
+      const courses = await resCour.json();
+      const resSem = await fetch ('http://localhost:8000/admin/semester/all', {
+        method: 'GET',
+        headers: { "Content-Type": "application/josn" }
+      });
+      const semesters = await resSem.json();
+      const resSess = await fetch ('http://localhost:8000/admin/session/all', {
+        method: 'GET',
+        headers: { "Content-Type": "application/josn" }
+      });
+      const sessions = await resSess.json();
+      console.log()
+      this.setState({ courses, semesters, sessions });
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   handleClose() {
@@ -48,7 +79,7 @@ export default class Add extends React.Component {
 
   async loadCourseSession(id) {
     try {
-      const response = await fetch(`http://localhost:8000/admin/course-session/${id}`, {
+      const response = await fetch(`http://localhost:8000/admin/course-session/direct-load/${id}`, {
         method: 'GET',
         headers: { "Content-Type": "application/josn" }
       });
@@ -93,16 +124,18 @@ export default class Add extends React.Component {
     if (this.props.add === 'edit' && this.props.editId) {
       this.loadCourseSession(this.props.editId);
     }
+    const course = this.state.courses.map((course) => (
+      <option key={course._id} value={course.id}>{course.name}</option>
+    ));
+    const semester = this.state.semesters.map((semester) => (
+      <option key={semester._id} value={semester.id}>{semester.name}</option>
+    ));
+    const session = this.state.sessions.map((session) => (
+      <option key={session._id} value={session.id}>{session.name}</option>
+    ));
     return (
       <>
         <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">
-          {/* <button
-            className="bg-lightBlue-500 text-white active:bg-lightBlue-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
-            type="button"
-            onClick={this.handleShow}
-          >
-            Add
-          </button> */}
           <div className="rounded-t bg-lightBlue-900  mb-0 px-6 py-6">
             <div className="text-center flex justify-between">
               <h6 className="text-blueGray-100 text-xl font-bold">Add/Edit Course and Session</h6>
@@ -130,13 +163,15 @@ export default class Add extends React.Component {
                     >
                       Course
                     </label>
-                    <input
-                      type="text"
+                    <select
                       className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                       name="courseId"
                       value={this.state.courseId}
                       onChange={this.handleInputChange}
-                    />
+                    >
+                      <option value="">---Select Course---</option>
+                      {course}
+                    </select>
                   </div>
                 </div>
                 <div className="w-full  px-4">
@@ -147,13 +182,15 @@ export default class Add extends React.Component {
                     >
                       Semester
                     </label>
-                    <input
-                      type="text"
+                    <select
                       className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                       name="semId"
                       value={this.state.semId}
                       onChange={this.handleInputChange}
-                    />
+                    >
+                      <option value="">---Select Semester---</option>
+                      {semester}
+                    </select>
                   </div>
                 </div>
                 <div className="w-full  px-4">
@@ -164,13 +201,15 @@ export default class Add extends React.Component {
                     >
                       Session
                     </label>
-                    <input
-                      type="text"
+                    <select
                       className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                       name="sessionId"
                       value={this.state.sessionId}
                       onChange={this.handleInputChange}
-                    />
+                    >
+                      <option value="">---Select Session---</option>
+                      {session}
+                    </select>
                   </div>
                 </div>
                 <div className="w-full  px-4">

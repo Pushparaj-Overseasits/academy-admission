@@ -18,7 +18,7 @@ class StudentAdmission extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userId: '60d1d097cde1257eae9632eb', resultTypeId: '60d0d224cde1257eae9632eb', docTypeId: '60d0d224cde1257eae9999eb',
+      userId: '', resultTypeId: '', docTypeId: '',
       sessionId: '', courseId: '', semId: '', enrollmentNo: '',
       subjectChoice: '',
       gender: '', firstName: '', surName: '',
@@ -40,6 +40,7 @@ class StudentAdmission extends React.Component {
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.saveAdmissionData = this.saveAdmissionData.bind(this);
+    this.clearForm = this.clearForm.bind(this);
   }
 
   handleInputChange(e) {
@@ -51,7 +52,49 @@ class StudentAdmission extends React.Component {
 
   saveAdmissionData(e) {
     e.preventDefault();
-    if (!this.state.acceptTermsConditions) {
+    // to check validation
+    const {
+      sessionId, courseId, enrollmentNo,
+      gender, firstName, surName,
+      fatherName, motherName, grandFatherName,
+      village, currState, currTaluka, currDistrict,
+      currPinCode, phone, alternate,
+      address, permState, permTaluka, permDistrict,
+      permPinCode, email, dateOfBirth,
+      religion, nationality, cast, status, bpl,
+      motherTongue, annualIncome, handicap,
+      bankACNo, branchName,
+      adharCardNo, electionCardNo,
+      boardUniversity10, seatNo10, trialAttemp10, schoolName10,
+      yearOfPassing10,
+      boardUniversity12, seatNo12, trialAttemp12, schoolName12,
+      yearOfPassing12,
+      boardUniversityClg, subjectName, seatNoClg,
+      yearOfPassingClg, acceptTermsConditions,
+    } = this.state;
+    if (
+      sessionId === '' || courseId === '' || enrollmentNo === '' ||
+      gender === '' || firstName === '' || surName === '' ||
+      fatherName === '' || motherName === '' || grandFatherName === '' ||
+      village === '' || currState === '' || currTaluka === '' || currDistrict === '' ||
+      currPinCode === '' || phone === '' || alternate === '' ||
+      address === '' || permState === '' || permTaluka === '' || permDistrict === '' ||
+      permPinCode === '' || email === '' || dateOfBirth === '' ||
+      religion === '' || nationality === '' || cast === '' || status === '' || bpl === '' ||
+      motherTongue === '' || annualIncome === '' || handicap === '' ||
+      bankACNo === '' || branchName === '' ||
+      adharCardNo === '' || electionCardNo === '' ||
+      boardUniversity10 === '' || seatNo10 === '' || trialAttemp10 === '' || schoolName10 === '' ||
+      yearOfPassing10 === '' ||
+      boardUniversity12 === '' || seatNo12 === '' || trialAttemp12 === '' || schoolName12 === '' ||
+      yearOfPassing12 === '' ||
+      boardUniversityClg === '' || subjectName === '' || seatNoClg === '' ||
+      yearOfPassingClg === ''
+    ) {
+      alert('Fields marked with * are required to be filled! Please fill all the required fields before submitting');
+      return;
+    }
+    if (!acceptTermsConditions) {
       alert('Please read and accept the terms and conditions!');
       return;
     }
@@ -85,6 +128,7 @@ class StudentAdmission extends React.Component {
   }
 
   async createPersonal() {
+    while(this.state.userId === '') console.log('waiting');
     try {
       const {
         userId, fatherName, motherName, grandFatherName, alternate, religion,
@@ -96,6 +140,26 @@ class StudentAdmission extends React.Component {
         body: JSON.stringify({
           userId, fatherName, motherName, grandfatherName: grandFatherName,
           alternative: alternate, religion, nationality, motherTongue,
+        })
+      });
+      const result = await response.json();
+      console.log(result);
+    } catch (err) {
+      console.log(err);
+    }
+    this.createAdmission();
+  }
+
+  async createAdmission() {
+    try {
+      const {
+        userId, sessionId, courseId, semId,
+      } = this.state;
+      const response = await fetch('http://localhost:8000/admission/create-admission', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          userId, sessionId, courseId, semId, date: new Date(Date.now()), fee: '0', status: 'not submited',
         })
       });
       const result = await response.json();
@@ -161,7 +225,7 @@ class StudentAdmission extends React.Component {
   }
 
   async createDocument() {
-    const { userId, sessionId, courseId, docTypeId } = this.state;
+    const { userId, sessionId, courseId } = this.state;
     try {
       const response = await fetch('http://localhost:8000/admission/create-document-type', {
         method: 'POST',
@@ -176,12 +240,13 @@ class StudentAdmission extends React.Component {
     } catch (err) {
       console.log();
     }
+    while(this.state.docTypeId === '') console.log('waiting');
     try {
       const response = await fetch('http://localhost:8000/admission/create-document', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          userId: userId, docTypeId, status: 'submitted',
+          userId: userId, docTypeId: this.state.docTypeId, status: 'submitted',
         })
       });
       const result = await response.json();
@@ -194,7 +259,7 @@ class StudentAdmission extends React.Component {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          docTypeId, sessionId, courseId, type: 'profilePic',
+          docTypeId: this.state.docTypeId, sessionId, courseId, type: 'profilePic',
         })
       });
       const result = await response.json();
@@ -222,6 +287,7 @@ class StudentAdmission extends React.Component {
     } catch (err) {
       console.log(err);
     }
+    while(this.state.resultTypeId === '') console.log('waiting');
     try {
       const {
         userId, resultTypeId, boardUniversity10, seatNo10, trialAttemp10,
@@ -276,6 +342,7 @@ class StudentAdmission extends React.Component {
     } catch (err) {
       console.log(err);
     }
+    while(this.state.resultTypeId === '') console.log('waiting');
     try {
       const {
         userId, resultTypeId, boardUniversity12, seatNo12, trialAttemp12,
@@ -330,6 +397,7 @@ class StudentAdmission extends React.Component {
     } catch (err) {
       console.log(err);
     }
+    while(this.state.resultTypeId === '') console.log('waiting');
     try {
       const {
         userId, resultTypeId, boardUniversityClg, seatNoClg, subjectName, 
@@ -364,6 +432,31 @@ class StudentAdmission extends React.Component {
     } catch (err) {
       console.log(err);
     }
+    this.clearForm();
+  }
+
+  clearForm() {
+    this.setState({
+      userId: '', resultTypeId: '', docTypeId: '',
+      sessionId: '', courseId: '', semId: '', enrollmentNo: '',
+      subjectChoice: '',
+      gender: '', firstName: '', surName: '',
+      fatherName: '', motherName: '', grandFatherName: '',
+      village: '', currState: '', currTaluka: '', currDistrict: '',
+      currPinCode: '', phone: '', alternate: '',
+      address: '', permState: '', permTaluka: '', permDistrict: '',
+      permPinCode: '', email: '', dateOfBirth: '',
+      religion: '', nationality: '', cast: '', status: '', bpl: '',
+      motherTongue: '', annualIncome: '', handicap: '',
+      bankACNo: '', branchName: '',
+      adharCardNo: '', electionCardNo: '',
+      boardUniversity10: '', seatNo10: '', trialAttemp10: '', schoolName10: '',
+      yearOfPassing10: '',
+      boardUniversity12: '', seatNo12: '', trialAttemp12: '', schoolName12: '',
+      yearOfPassing12: '',
+      boardUniversityClg: '', subjectName: '', examName: '', seatNoClg: '',
+      yearOfPassingClg: '', acceptTermsConditions: false,
+    });
   }
 
   render() {

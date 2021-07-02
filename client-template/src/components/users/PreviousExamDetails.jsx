@@ -107,6 +107,7 @@ class PreviousExamDetails extends React.Component {
                             onChange={this.handleInputChange}
                           >
                             <option value="">-- Select Course --</option>
+                            <option value="none">none</option>
                           </Form.Control>
                         </Col>
                       </Form.Group>

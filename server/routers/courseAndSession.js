@@ -1,6 +1,7 @@
 const express = require('express');
 const {
   getAllCourSess,
+  loadById,
   getById,
   createCourSess,
   updateCourSess,
@@ -10,6 +11,7 @@ const {
 const router = express.Router();
 
 router.route('/all').get(getAllCourSess);
+router.route('/direct-load/:id').get(loadById);
 router.route('/:id').get(getById);
 router.route('/create').post(createCourSess);
 router.route('/:id').put(updateCourSess);

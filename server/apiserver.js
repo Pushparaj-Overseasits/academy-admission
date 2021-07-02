@@ -8,6 +8,7 @@ const course = require('./routers/course');
 const semester = require('./routers/semester');
 const session = require('./routers/session');
 const courseSession = require('./routers/courseAndSession');
+const studentList = require('./routers/studentList');
 
 const app = express();
 
@@ -38,6 +39,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/admission', admission);
+app.use('/admin/student-list', studentList);
 app.use('/admin/user-master', userMaster);
 app.use('/admin/course', course);
 app.use('/admin/semester', semester);

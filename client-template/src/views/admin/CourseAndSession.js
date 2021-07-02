@@ -21,15 +21,29 @@ export default class CourseAndSession extends React.Component
   }
 
   async loadCourseSessions() {
+    let result, couSess = [];
     try {
       const response = await fetch('http://localhost:8000/admin/course-session/all', {
         method: 'GET',
         headers: { "Content-Type": "application/josn" }
       });
-      const result = await response.json();
-      this.setState({ courseSessions: result });
+      result = await response.json();
+      console.log(result);
     } catch (error) {
       console.log(error);
+    }
+    try {
+      for (let i=0; i<result.length; ++i) {
+        const response = await fetch(`http://localhost:8000/admin/course-session/${result[i]._id}`, {
+          method: 'GET',
+          headers: { "Content-Type": "application/josn" }
+        });
+        const res = await response.json();
+        couSess.push(res);
+      }
+      this.setState({ courseSessions: couSess });
+    } catch(err) {
+      console.log(err);
     }
   }
 

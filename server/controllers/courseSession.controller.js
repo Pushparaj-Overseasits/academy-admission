@@ -14,11 +14,25 @@ const getAllCourSess = async (req, res) => {
   }
 };
 
+const loadById = async (req, res) => {
+  try {
+    const CourSess = await CourSessModel.findById(req.params.id);
+    if (!CourSess) {
+      res.status(404).json({ message: 'CourseSession not found!' });
+    }
+    res.status(200).send(CourSess);
+  } catch (err) {
+    console.log(err);
+    res.send(500).json({ error: err });
+  }
+};
+
 const getById = async (req, res) => {
   try {
     const CourSess = await CourSessModel.findById(req.params.id);
     if (!CourSess) {
-      res.status(404).send('Course and Session not found!');
+      res.status(404).json({ message: 'Course and Session not found!' });
+      return;
     }
     const {
       _id, id, courseId, semId, sessionId, status, details,
@@ -67,34 +81,7 @@ const getById = async (req, res) => {
 
 const createCourSess = async (req, res) => {
   try {
-    const course = await CourseModel.findOne({ name: req.body.courseId }, 'id', (err, cour) => {
-      if (err) {
-        console.log(err);
-        res.send(500).send(err);
-        return;
-      }
-      console.log(cour);
-    });
-    const semester = await SemesterModel.findOne({ name: req.body.semId }, 'id', (err, sem) => {
-      if (err) {
-        console.log(err);
-        res.send(500).send(err);
-        return;
-      }
-      console.log(sem);
-    });
-    const session = await SessionModel.findOne({ name: req.body.sessionId }, 'id', (err, sess) => {
-      if (err) {
-        console.log(err);
-        res.send(500).send(err);
-        return;
-      }
-      console.log(sess);
-    });
     req.body.id = mongoose.Types.ObjectId();
-    req.body.courseId = course.id;
-    req.body.semId = semester.id;
-    req.body.sessionId = session.id;
     const createdCourSess = new CourSessModel(req.body);
     await createdCourSess.save();
     res.status(200).send(createdCourSess);
@@ -126,6 +113,7 @@ const deleteCourSess = async (req, res) => {
 
 module.exports = {
   getAllCourSess,
+  loadById,
   getById,
   createCourSess,
   updateCourSess,
