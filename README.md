@@ -59,7 +59,7 @@ Therefore the aim is to get the code from the git repository to run on the devel
 
 ```cd Academy-Admission```
 
-**Clone the repository from GitLab :**  
+**Clone the repository from GitHub :**  
 
 ```git clone https://github.com/Pushparaj-Overseasits/academy-admission.git```
 
