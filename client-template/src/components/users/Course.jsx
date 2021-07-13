@@ -93,7 +93,7 @@ class Course extends React.Component {
               <Form>
                 <Form.Group as={Row}>
                   <Form.Label column sm="3">
-                    Apply For Session: *
+                    Apply For Session: <span style={{ color: 'red' }}>*</span>
                   </Form.Label>
                   <Col sm="9">
                     <Form.Control
@@ -109,7 +109,7 @@ class Course extends React.Component {
                 </Form.Group>
                 <Form.Group as={Row}>
                   <Form.Label column sm="3">
-                    Apply For Course: *
+                    Apply For Course: <span style={{ color: 'red' }}>*</span>
                   </Form.Label>
                   <Col sm="9">
                     <Form.Control
@@ -125,7 +125,7 @@ class Course extends React.Component {
                 </Form.Group>
                 <Form.Group as={Row} controlId="formPlaintextEnrollmentNo">
                   <Form.Label column sm="3">
-                    Enrollement Number: *
+                    Enrollement Number: <span style={{ color: 'red' }}>*</span>
                   </Form.Label>
                   <Col sm="9">
                     <Form.Control

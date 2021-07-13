@@ -10,7 +10,7 @@ const signin = async (req, res) => {
       const isMatch = (admin.password === password);
       const token = await admin.generateAuthToken();
       res.cookie('jwtoken', token, {
-        expires: new Date(Date.now() + 25892000000),
+        expires: new Date(Date.now() + 86400000),
         httpOnly: true,
         secure: false,
       });

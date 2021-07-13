@@ -1,5 +1,4 @@
 import React from 'react';
-// import Header from './Header.jsx';
 import Course from './Course.jsx';
 import SubjectChoice from './SubjectChoice.jsx';
 import StudentDetails from './StudentDetails.jsx';
@@ -13,7 +12,6 @@ import TwelfthExamDetails from './TwelfthExamDetails.jsx';
 import PreviousExamDetails from './PreviousExamDetails.jsx';
 import Affidavit from './Affidavit.jsx';
 
-/* eslint-disable-next-line react/prefer-stateless-function */
 class StudentAdmission extends React.Component {
   constructor(props) {
     super(props);
@@ -23,24 +21,38 @@ class StudentAdmission extends React.Component {
       subjectChoice: '',
       gender: '', firstName: '', surName: '',
       fatherName: '', motherName: '', grandFatherName: '',
+      profilePicFile: '', signPicFile: '',
       village: '', currState: '', currTaluka: '', currDistrict: '',
       currPinCode: '', phone: '', alternate: '',
       address: '', permState: '', permTaluka: '', permDistrict: '',
       permPinCode: '', email: '', dateOfBirth: '',
-      religion: '', nationality: '', cast: '', status: '', bpl: '',
+      leaveCertificateFile: '',
+      religion: '', nationality: '', cast: '', status: 'Active', bpl: '',
       motherTongue: '', annualIncome: '', handicap: '',
-      bankACNo: '', branchName: '',
-      adharCardNo: '', electionCardNo: '',
+      bankACNo: '', branchName: '', bankPassbookFile: '',
+      adharCardNo: '', electionCardNo: '', adharCardFile: '', electionCardFile: '',
       boardUniversity10: '', seatNo10: '', trialAttemp10: '', schoolName10: '',
-      yearOfPassing10: '',
+      yearOfPassing10: '', resultFile10: '',
       boardUniversity12: '', seatNo12: '', trialAttemp12: '', schoolName12: '',
-      yearOfPassing12: '',
+      yearOfPassing12: '', resultFile12: '',
       boardUniversityClg: '', subjectName: '', examName: '', seatNoClg: '',
-      yearOfPassingClg: '', acceptTermsConditions: false,
+      yearOfPassingClg: '', resultFileClg: '', acceptTermsConditions: false, affidavitFile: '',
     };
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleDateChange = this.handleDateChange.bind(this);
+    this.handleDocumentChange = this.handleDocumentChange.bind(this);
     this.saveAdmissionData = this.saveAdmissionData.bind(this);
     this.clearForm = this.clearForm.bind(this);
+  }
+
+  handleDocumentChange(e) {
+    this.setState({ [e.target.name]: e.target.files[0] });
+    // console.log(e.target.name, ' ', e.target.files[0]);
+  }
+
+  handleDateChange(date) {
+    this.setState({ dateOfBirth: date });
+    // console.log('dateOfBirth: ', date);
   }
 
   handleInputChange(e) {
@@ -57,49 +69,63 @@ class StudentAdmission extends React.Component {
       sessionId, courseId, enrollmentNo,
       gender, firstName, surName,
       fatherName, motherName, grandFatherName,
+      profilePicFile, signPicFile,
       village, currState, currTaluka, currDistrict,
       currPinCode, phone, alternate,
       address, permState, permTaluka, permDistrict,
       permPinCode, email, dateOfBirth,
+      leaveCertificateFile,
       religion, nationality, cast, status, bpl,
       motherTongue, annualIncome, handicap,
-      bankACNo, branchName,
-      adharCardNo, electionCardNo,
+      bankACNo, branchName, bankPassbookFile,
+      adharCardNo, electionCardNo, adharCardFile, electionCardFile,
       boardUniversity10, seatNo10, trialAttemp10, schoolName10,
-      yearOfPassing10,
+      yearOfPassing10, resultFile10,
       boardUniversity12, seatNo12, trialAttemp12, schoolName12,
-      yearOfPassing12,
+      yearOfPassing12, resultFile12,
       boardUniversityClg, subjectName, seatNoClg,
-      yearOfPassingClg, acceptTermsConditions,
+      yearOfPassingClg, resultFileClg, acceptTermsConditions,
     } = this.state;
     if (
       sessionId === '' || courseId === '' || enrollmentNo === '' ||
       gender === '' || firstName === '' || surName === '' ||
       fatherName === '' || motherName === '' || grandFatherName === '' ||
+      profilePicFile === '' || signPicFile === '' ||
       village === '' || currState === '' || currTaluka === '' || currDistrict === '' ||
       currPinCode === '' || phone === '' || alternate === '' ||
       address === '' || permState === '' || permTaluka === '' || permDistrict === '' ||
       permPinCode === '' || email === '' || dateOfBirth === '' ||
-      religion === '' || nationality === '' || cast === '' || status === '' || bpl === '' ||
+      leaveCertificateFile === '' ||
+      religion === '' || nationality === '' || cast === '' || status !== 'Active' || bpl === '' ||
       motherTongue === '' || annualIncome === '' || handicap === '' ||
-      bankACNo === '' || branchName === '' ||
-      adharCardNo === '' || electionCardNo === '' ||
+      bankACNo === '' || branchName === '' || bankPassbookFile === '' ||
+      adharCardNo === '' || electionCardNo === '' || adharCardFile === '' || electionCardFile === '' ||
       boardUniversity10 === '' || seatNo10 === '' || trialAttemp10 === '' || schoolName10 === '' ||
-      yearOfPassing10 === '' ||
+      yearOfPassing10 === '' || resultFile10 === '' ||
       boardUniversity12 === '' || seatNo12 === '' || trialAttemp12 === '' || schoolName12 === '' ||
-      yearOfPassing12 === '' ||
+      yearOfPassing12 === '' || resultFile12 === '' ||
       boardUniversityClg === '' || subjectName === '' || seatNoClg === '' ||
-      yearOfPassingClg === ''
+      yearOfPassingClg === '' || resultFileClg === ''
     ) {
       alert('Fields marked with * are required to be filled! Please fill all the required fields before submitting');
       return;
     }
+    // if (
+    //   typeof(currPinCode) !== "number" || typeof(phone) !== "number" || typeof(alternate) !== "number" ||
+    //   typeof(permPinCode) !== "number" || typeof(annualIncome) !== "number" || typeof(bankACNo) !== "number" ||
+    //   typeof(adharCardNo) !== "number" || typeof(electionCardNo) !== "number" || typeof(seatNo10) !== "number" ||
+    //   typeof(yearOfPassing10) !== "number" || typeof(seatNo12) !== "number" || typeof(yearOfPassing12) !== "number" ||
+    //   typeof(seatNoClg) !== "number" || typeof(yearOfPassingClg) !== "number"
+    // ) {
+    //   alert('Pincodes, Phone Numbers, Income, Bank Account Number, Adhar and Election Card numbers, Seat Numbers, ' +
+    //    ' and year of passing all should only contain numbers!');
+    //   return;
+    // }
     if (!acceptTermsConditions) {
       alert('Please read and accept the terms and conditions!');
       return;
     }
     this.createStudent();
-    alert('Admission successful! Thank You!');
   }
 
   async createStudent() {
@@ -120,7 +146,7 @@ class StudentAdmission extends React.Component {
       });
       const result = await response.json();
       this.setState({ userId: result.id });
-      console.log(result);
+      // console.log(result);
     } catch (err) {
       console.log(err);
     }
@@ -142,8 +168,8 @@ class StudentAdmission extends React.Component {
           alternative: alternate, religion, nationality, motherTongue,
         })
       });
-      const result = await response.json();
-      console.log(result);
+      await response.json();
+      // console.log(result);
     } catch (err) {
       console.log(err);
     }
@@ -162,8 +188,8 @@ class StudentAdmission extends React.Component {
           userId, sessionId, courseId, semId, date: new Date(Date.now()), fee: '0', status: 'not submited',
         })
       });
-      const result = await response.json();
-      console.log(result);
+      await response.json();
+      // console.log(result);
     } catch (err) {
       console.log(err);
     }
@@ -185,8 +211,8 @@ class StudentAdmission extends React.Component {
           taluka: currTaluka, addType: 'Current',
         })
       });
-      const resultCurr = await responseCurr.json();
-      console.log(resultCurr);
+      await responseCurr.json();
+      // console.log(resultCurr);
       // saving Permanent Adress
       const responsePerm = await fetch('http://localhost:8000/admission/create-address', {
         method: 'POST',
@@ -196,8 +222,8 @@ class StudentAdmission extends React.Component {
           taluka: permTaluka, addType: 'Permanent',
         })
       });
-      const resultPerm = await responsePerm.json();
-      console.log(resultPerm);
+      await responsePerm.json();
+      // console.log(resultPerm);
     } catch (err) {
       console.log(err);
     }
@@ -205,10 +231,10 @@ class StudentAdmission extends React.Component {
   }
 
   async createBank() {
+    const {
+      userId, bankACNo, branchName,
+    } = this.state;
     try {
-      const {
-        userId, bankACNo, branchName,
-      } = this.state;
       const response = await fetch('http://localhost:8000/admission/create-bank', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
@@ -216,56 +242,774 @@ class StudentAdmission extends React.Component {
           userId, bankAccount: bankACNo, branchName,
         })
       });
-      const result = await response.json();
-      console.log(result);
+      await response.json();
+      // console.log(result);
     } catch (err) {
       console.log(err);
     }
-    this.createDocument();
+    this.createProfileDocument();
   }
 
-  async createDocument() {
-    const { userId, sessionId, courseId } = this.state;
+  async createProfileDocument() {
+    const { userId, sessionId, courseId, profilePicFile } = this.state;
+    let fileName;
     try {
       const response = await fetch('http://localhost:8000/admission/create-document-type', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name: 'profilePic', status: 'submitted',
+          name: 'Profile Pic', status: 'submitted',
         })
       });
       const result = await response.json();
-      console.log(result);
+      // console.log(result);
       this.setState({ docTypeId: result.id });
     } catch (err) {
-      console.log();
+      console.log(err);
     }
-    while(this.state.docTypeId === '') console.log('waiting');
+    let longWait;
+    while(this.state.docTypeId === '') {
+      console.log('waiting');
+      if (longWait++ === 150000) {
+        alert('Server is not responding. Some error occurded :(');
+        break;
+      }
+    }
+    try {
+      const uploadData = new FormData();
+      uploadData.append('file', profilePicFile);
+      const response = await fetch('http://localhost:8000/admission/upload-document', {
+        method: 'POST',
+        body: uploadData,
+      });
+      const result = await response.json();
+      fileName = result.fileName;
+      // console.log(result);
+    } catch(err) {
+      console.log(err);
+    }
+    longWait = 0;
+    while(fileName === undefined) {
+      console.log('waiting');
+      if (longWait++ === 150000) {
+        alert('Server is not responding. Some error occurded :(');
+        break;
+      }
+    }
+    // console.log(fileName);
     try {
       const response = await fetch('http://localhost:8000/admission/create-document', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          userId: userId, docTypeId: this.state.docTypeId, status: 'submitted',
+          userId: userId, docTypeId: this.state.docTypeId, url: fileName, status: 'submitted',
         })
       });
-      const result = await response.json();
-      console.log(result);
+      await response.json();
+      // console.log(result);
     } catch (err) {
-      console.log();
+      console.log(err);
     }
     try {
       const response = await fetch('http://localhost:8000/admission/create-document-master', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          docTypeId: this.state.docTypeId, sessionId, courseId, type: 'profilePic',
+          docTypeId: this.state.docTypeId, sessionId, courseId, type: 'Profile Pic',
+        })
+      });
+      await response.json();
+      // console.log(result);
+    } catch (err) {
+      console.log(err);
+    }
+    this.createSignatureDocument();
+  }
+
+  async createSignatureDocument() {
+    const { userId, sessionId, courseId, signPicFile, } = this.state;
+    let fileName;
+    try {
+      const response = await fetch('http://localhost:8000/admission/create-document-type', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: 'Signature Pic', status: 'submitted',
         })
       });
       const result = await response.json();
-      console.log(result);
+      // console.log(result);
+      this.setState({ docTypeId: result.id });
     } catch (err) {
-      console.log();
+      console.log(err);
+    }
+    let longWait;
+    while(this.state.docTypeId === '') {
+      console.log('waiting');
+      if (longWait++ === 150000) {
+        alert('Server is not responding. Some error occurded :(');
+        break;
+      }
+    }
+    try {
+      const uploadData = new FormData();
+      uploadData.append('file', signPicFile);
+      const response = await fetch('http://localhost:8000/admission/upload-document', {
+        method: 'POST',
+        body: uploadData,
+      });
+      const result = await response.json();
+      fileName = result.fileName;
+      // console.log(result);
+    } catch(err) {
+      console.log(err);
+    }
+    longWait = 0;
+    while(fileName === undefined) {
+      console.log('waiting');
+      if (longWait++ === 150000) {
+        alert('Server is not responding. Some error occurded :(');
+        break;
+      }
+    }
+    // console.log(fileName);
+    try {
+      const response = await fetch('http://localhost:8000/admission/create-document', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          userId: userId, docTypeId: this.state.docTypeId, url: fileName, status: 'submitted',
+        })
+      });
+      await response.json();
+      // console.log(result);
+    } catch (err) {
+      console.log(err);
+    }
+    try {
+      const response = await fetch('http://localhost:8000/admission/create-document-master', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          docTypeId: this.state.docTypeId, sessionId, courseId, type: 'Signature Pic',
+        })
+      });
+      await response.json();
+      // console.log(result);
+    } catch (err) {
+      console.log(err);
+    }
+    this.createLeaveCertificateDocument();
+  }
+
+  async createLeaveCertificateDocument() {
+    const { userId, sessionId, courseId, leaveCertificateFile } = this.state;
+    let fileName;
+    try {
+      const response = await fetch('http://localhost:8000/admission/create-document-type', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: 'Leave Certificate', status: 'submitted',
+        })
+      });
+      const result = await response.json();
+      // console.log(result);
+      this.setState({ docTypeId: result.id });
+    } catch (err) {
+      console.log(err);
+    }
+    let longWait;
+    while(this.state.docTypeId === '') {
+      console.log('waiting');
+      if (longWait++ === 150000) {
+        alert('Server is not responding. Some error occurded :(');
+        break;
+      }
+    }
+    try {
+      const uploadData = new FormData();
+      uploadData.append('file', leaveCertificateFile);
+      const response = await fetch('http://localhost:8000/admission/upload-document', {
+        method: 'POST',
+        body: uploadData,
+      });
+      const result = await response.json();
+      fileName = result.fileName;
+      // console.log(result);
+    } catch(err) {
+      console.log(err);
+    }
+    longWait = 0;
+    while(fileName === undefined) {
+      console.log('waiting');
+      if (longWait++ === 150000) {
+        alert('Server is not responding. Some error occurded :(');
+        break;
+      }
+    }
+    // console.log(fileName);
+    try {
+      const response = await fetch('http://localhost:8000/admission/create-document', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          userId: userId, docTypeId: this.state.docTypeId, url: fileName, status: 'submitted',
+        })
+      });
+      await response.json();
+      // console.log(result);
+    } catch (err) {
+      console.log(err);
+    }
+    try {
+      const response = await fetch('http://localhost:8000/admission/create-document-master', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          docTypeId: this.state.docTypeId, sessionId, courseId, type: 'Leave Certificate',
+        })
+      });
+      await response.json();
+      // console.log(result);
+    } catch (err) {
+      console.log(err);
+    }
+    this.createBankDocument();
+  }
+
+  async createBankDocument() {
+    const { userId, sessionId, courseId, bankPassbookFile } = this.state;
+    let fileName;
+    try {
+      const response = await fetch('http://localhost:8000/admission/create-document-type', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: 'Bank Passbook', status: 'submitted',
+        })
+      });
+      const result = await response.json();
+      // console.log(result);
+      this.setState({ docTypeId: result.id });
+    } catch (err) {
+      console.log(err);
+    }
+    let longWait;
+    while(this.state.docTypeId === '') {
+      console.log('waiting');
+      if (longWait++ === 150000) {
+        alert('Server is not responding. Some error occurded :(');
+        break;
+      }
+    }
+    try {
+      const uploadData = new FormData();
+      uploadData.append('file', bankPassbookFile);
+      const response = await fetch('http://localhost:8000/admission/upload-document', {
+        method: 'POST',
+        body: uploadData,
+      });
+      const result = await response.json();
+      fileName = result.fileName;
+      // console.log(result);
+    } catch(err) {
+      console.log(err);
+    }
+    longWait = 0;
+    while(fileName === undefined) {
+      console.log('waiting');
+      if (longWait++ === 150000) {
+        alert('Server is not responding. Some error occurded :(');
+        break;
+      }
+    }
+    // console.log(fileName);
+    try {
+      const response = await fetch('http://localhost:8000/admission/create-document', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          userId: userId, docTypeId: this.state.docTypeId, url: fileName, status: 'submitted',
+        })
+      });
+      await response.json();
+      // console.log(result);
+    } catch (err) {
+      console.log(err);
+    }
+    try {
+      const response = await fetch('http://localhost:8000/admission/create-document-master', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          docTypeId: this.state.docTypeId, sessionId, courseId, type: 'Bank Passbook',
+        })
+      });
+      await response.json();
+      // console.log(result);
+    } catch (err) {
+      console.log(err);
+    }
+    this.createAdharDocument();
+  }
+
+  async createAdharDocument() {
+    const { userId, sessionId, courseId, adharCardFile } = this.state;
+    let fileName;
+    try {
+      const response = await fetch('http://localhost:8000/admission/create-document-type', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: 'Adhar Card', status: 'submitted',
+        })
+      });
+      const result = await response.json();
+      // console.log(result);
+      this.setState({ docTypeId: result.id });
+    } catch (err) {
+      console.log(err);
+    }
+    let longWait;
+    while(this.state.docTypeId === '') {
+      console.log('waiting');
+      if (longWait++ === 150000) {
+        alert('Server is not responding. Some error occurded :(');
+        break;
+      }
+    }
+    try {
+      const uploadData = new FormData();
+      uploadData.append('file', adharCardFile);
+      const response = await fetch('http://localhost:8000/admission/upload-document', {
+        method: 'POST',
+        body: uploadData,
+      });
+      const result = await response.json();
+      fileName = result.fileName;
+      // console.log(result);
+    } catch(err) {
+      console.log(err);
+    }
+    longWait = 0;
+    while(fileName === undefined) {
+      console.log('waiting');
+      if (longWait++ === 150000) {
+        alert('Server is not responding. Some error occurded :(');
+        break;
+      }
+    }
+    // console.log(fileName);
+    try {
+      const response = await fetch('http://localhost:8000/admission/create-document', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          userId: userId, docTypeId: this.state.docTypeId, url: fileName, status: 'submitted',
+        })
+      });
+      await response.json();
+      // console.log(result);
+    } catch (err) {
+      console.log(err);
+    }
+    try {
+      const response = await fetch('http://localhost:8000/admission/create-document-master', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          docTypeId: this.state.docTypeId, sessionId, courseId, type: 'Adhar Card',
+        })
+      });
+      await response.json();
+      // console.log(result);
+    } catch (err) {
+      console.log(err);
+    }
+    this.createElectionDocument();
+  }
+
+  async createElectionDocument() {
+    const { userId, sessionId, courseId, electionCardFile } = this.state;
+    let fileName;
+    try {
+      const response = await fetch('http://localhost:8000/admission/create-document-type', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: 'Election Card', status: 'submitted',
+        })
+      });
+      const result = await response.json();
+      // console.log(result);
+      this.setState({ docTypeId: result.id });
+    } catch (err) {
+      console.log(err);
+    }
+    let longWait;
+    while(this.state.docTypeId === '') {
+      console.log('waiting');
+      if (longWait++ === 150000) {
+        alert('Server is not responding. Some error occurded :(');
+        break;
+      }
+    }
+    try {
+      const uploadData = new FormData();
+      uploadData.append('file', electionCardFile);
+      const response = await fetch('http://localhost:8000/admission/upload-document', {
+        method: 'POST',
+        body: uploadData,
+      });
+      const result = await response.json();
+      fileName = result.fileName;
+      // console.log(result);
+    } catch(err) {
+      console.log(err);
+    }
+    longWait = 0;
+    while(fileName === undefined) {
+      console.log('waiting');
+      if (longWait++ === 150000) {
+        alert('Server is not responding. Some error occurded :(');
+        break;
+      }
+    }
+    // console.log(fileName);
+    try {
+      const response = await fetch('http://localhost:8000/admission/create-document', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          userId: userId, docTypeId: this.state.docTypeId, url: fileName, status: 'submitted',
+        })
+      });
+      await response.json();
+      // console.log(result);
+    } catch (err) {
+      console.log(err);
+    }
+    try {
+      const response = await fetch('http://localhost:8000/admission/create-document-master', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          docTypeId: this.state.docTypeId, sessionId, courseId, type: 'Election Card',
+        })
+      });
+      await response.json();
+      // console.log(result);
+    } catch (err) {
+      console.log(err);
+    }
+    this.createTenthDocument();
+  }
+
+  async createTenthDocument() {
+    const { userId, sessionId, courseId, resultFile10 } = this.state;
+    let fileName;
+    try {
+      const response = await fetch('http://localhost:8000/admission/create-document-type', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: '10th Result', status: 'submitted',
+        })
+      });
+      const result = await response.json();
+      // console.log(result);
+      this.setState({ docTypeId: result.id });
+    } catch (err) {
+      console.log(err);
+    }
+    let longWait;
+    while(this.state.docTypeId === '') {
+      console.log('waiting');
+      if (longWait++ === 150000) {
+        alert('Server is not responding. Some error occurded :(');
+        break;
+      }
+    }
+    try {
+      const uploadData = new FormData();
+      uploadData.append('file', resultFile10);
+      const response = await fetch('http://localhost:8000/admission/upload-document', {
+        method: 'POST',
+        body: uploadData,
+      });
+      const result = await response.json();
+      fileName = result.fileName;
+      // console.log(result);
+    } catch(err) {
+      console.log(err);
+    }
+    longWait = 0;
+    while(fileName === undefined) {
+      console.log('waiting');
+      if (longWait++ === 150000) {
+        alert('Server is not responding. Some error occurded :(');
+        break;
+      }
+    }
+    // console.log(fileName);
+    try {
+      const response = await fetch('http://localhost:8000/admission/create-document', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          userId: userId, docTypeId: this.state.docTypeId, url: fileName, status: 'submitted',
+        })
+      });
+      await response.json();
+      // console.log(result);
+    } catch (err) {
+      console.log(err);
+    }
+    try {
+      const response = await fetch('http://localhost:8000/admission/create-document-master', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          docTypeId: this.state.docTypeId, sessionId, courseId, type: '10th Result',
+        })
+      });
+      await response.json();
+      // console.log(result);
+    } catch (err) {
+      console.log(err);
+    }
+    this.createTwelfthDocument();
+  }
+
+  async createTwelfthDocument() {
+    const { userId, sessionId, courseId, resultFile12 } = this.state;
+    let fileName;
+    try {
+      const response = await fetch('http://localhost:8000/admission/create-document-type', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: '12th Result', status: 'submitted',
+        })
+      });
+      const result = await response.json();
+      // console.log(result);
+      this.setState({ docTypeId: result.id });
+    } catch (err) {
+      console.log(err);
+    }
+    let longWait;
+    while(this.state.docTypeId === '') {
+      console.log('waiting');
+      if (longWait++ === 150000) {
+        alert('Server is not responding. Some error occurded :(');
+        break;
+      }
+    }
+    try {
+      const uploadData = new FormData();
+      uploadData.append('file', resultFile12);
+      const response = await fetch('http://localhost:8000/admission/upload-document', {
+        method: 'POST',
+        body: uploadData,
+      });
+      const result = await response.json();
+      fileName = result.fileName;
+      // console.log(result);
+    } catch(err) {
+      console.log(err);
+    }
+    longWait = 0;
+    while(fileName === undefined) {
+      console.log('waiting');
+      if (longWait++ === 150000) {
+        alert('Server is not responding. Some error occurded :(');
+        break;
+      }
+    }
+    // console.log(fileName);
+    try {
+      const response = await fetch('http://localhost:8000/admission/create-document', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          userId: userId, docTypeId: this.state.docTypeId, url: fileName, status: 'submitted',
+        })
+      });
+      await response.json();
+      // console.log(result);
+    } catch (err) {
+      console.log(err);
+    }
+    try {
+      const response = await fetch('http://localhost:8000/admission/create-document-master', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          docTypeId: this.state.docTypeId, sessionId, courseId, type: '12th Result',
+        })
+      });
+      await response.json();
+      // console.log(result);
+    } catch (err) {
+      console.log(err);
+    }
+    this.createPreviousDocument();
+  }
+
+  async createPreviousDocument() {
+    const { userId, sessionId, courseId, resultFileClg, affidavitFile } = this.state;
+    let fileName;
+    try {
+      const response = await fetch('http://localhost:8000/admission/create-document-type', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: 'Previous Exam Result', status: 'submitted',
+        })
+      });
+      const result = await response.json();
+      // console.log(result);
+      this.setState({ docTypeId: result.id });
+    } catch (err) {
+      console.log(err);
+    }
+    let longWait;
+    while(this.state.docTypeId === '') {
+      console.log('waiting');
+      if (longWait++ === 150000) {
+        alert('Server is not responding. Some error occurded :(');
+        break;
+      }
+    }
+    try {
+      const uploadData = new FormData();
+      uploadData.append('file', resultFileClg);
+      const response = await fetch('http://localhost:8000/admission/upload-document', {
+        method: 'POST',
+        body: uploadData,
+      });
+      const result = await response.json();
+      fileName = result.fileName;
+      // console.log(result);
+    } catch(err) {
+      console.log(err);
+    }
+    longWait = 0;
+    while(fileName === undefined) {
+      console.log('waiting');
+      if (longWait++ === 150000) {
+        alert('Server is not responding. Some error occurded :(');
+        break;
+      }
+    }
+    // console.log(fileName);
+    try {
+      const response = await fetch('http://localhost:8000/admission/create-document', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          userId: userId, docTypeId: this.state.docTypeId, url: fileName, status: 'submitted',
+        })
+      });
+      await response.json();
+      // console.log(result);
+    } catch (err) {
+      console.log(err);
+    }
+    try {
+      const response = await fetch('http://localhost:8000/admission/create-document-master', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          docTypeId: this.state.docTypeId, sessionId, courseId, type: 'Previous Exam Result',
+        })
+      });
+      await response.json();
+      // console.log(result);
+    } catch (err) {
+      console.log(err);
+    }
+    if (affidavitFile === '') {
+      this.create10Result();
+    } else {
+      this.createAffidavitDocument();
+    }
+  }
+
+  async createAffidavitDocument() {
+    const { userId, sessionId, courseId, affidavitFile, } = this.state;
+    let fileName;
+    try {
+      const response = await fetch('http://localhost:8000/admission/create-document-type', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: 'Affidavit', status: 'submitted',
+        })
+      });
+      const result = await response.json();
+      // console.log(result);
+      this.setState({ docTypeId: result.id });
+    } catch (err) {
+      console.log(err);
+    }
+    let longWait;
+    while(this.state.docTypeId === '') {
+      console.log('waiting');
+      if (longWait++ === 150000) {
+        alert('Server is not responding. Some error occurded :(');
+        break;
+      }
+    }
+    try {
+      const uploadData = new FormData();
+      uploadData.append('file', affidavitFile);
+      const response = await fetch('http://localhost:8000/admission/upload-document', {
+        method: 'POST',
+        body: uploadData,
+      });
+      const result = await response.json();
+      fileName = result.fileName;
+      // console.log(result);
+    } catch(err) {
+      console.log(err);
+    }
+    longWait = 0;
+    while(fileName === undefined) {
+      console.log('waiting');
+      if (longWait++ === 150000) {
+        alert('Server is not responding. Some error occurded :(');
+        break;
+      }
+    }
+    // console.log(fileName);
+    try {
+      const response = await fetch('http://localhost:8000/admission/create-document', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          userId: userId, docTypeId: this.state.docTypeId, url: fileName, status: 'submitted',
+        })
+      });
+      await response.json();
+      // console.log(result);
+    } catch (err) {
+      console.log(err);
+    }
+    try {
+      const response = await fetch('http://localhost:8000/admission/create-document-master', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          docTypeId: this.state.docTypeId, sessionId, courseId, type: 'Affidavit',
+        })
+      });
+      await response.json();
+      // console.log(result);
+    } catch (err) {
+      console.log(err);
     }
     this.create10Result();
   }
@@ -282,12 +1026,19 @@ class StudentAdmission extends React.Component {
         })
       });
       const result = await response.json();
-      console.log(result);
+      // console.log(result);
       this.setState({ resultTypeId: result.id });
     } catch (err) {
       console.log(err);
     }
-    while(this.state.resultTypeId === '') console.log('waiting');
+    let longWait = 0;
+    while(this.state.resultTypeId === '') {
+      console.log('waiting');
+      if (longWait++ === 150000) {
+        alert('Server is not responding. Some error occurded :(');
+        break;
+      }
+    }
     try {
       const {
         userId, resultTypeId, boardUniversity10, seatNo10, trialAttemp10,
@@ -301,8 +1052,8 @@ class StudentAdmission extends React.Component {
           Trial: trialAttemp10, yearOfPassing: yearOfPassing10, schoolName: schoolName10,
         })
       });
-      const result = await response.json();
-      console.log(result);
+      await response.json();
+      // console.log(result);
     } catch (err) {
       console.log(err);
     }
@@ -317,8 +1068,8 @@ class StudentAdmission extends React.Component {
           resultTypeId, sessionId, courseId, type: '10th result',
         })
       });
-      const result = await response.json();
-      console.log(result);
+      await response.json();
+      // console.log(result);
     } catch (err) {
       console.log(err);
     }
@@ -337,12 +1088,19 @@ class StudentAdmission extends React.Component {
         })
       });
       const result = await response.json();
-      console.log(result);
+      // console.log(result);
       this.setState({ resultTypeId: result.id });
     } catch (err) {
       console.log(err);
     }
-    while(this.state.resultTypeId === '') console.log('waiting');
+    let longWait = 0;
+    while(this.state.resultTypeId === '') {
+      console.log('waiting');
+      if (longWait++ === 150000) {
+        alert('Server is not responding. Some error occurded :(');
+        break;
+      }
+    }
     try {
       const {
         userId, resultTypeId, boardUniversity12, seatNo12, trialAttemp12,
@@ -356,8 +1114,8 @@ class StudentAdmission extends React.Component {
           Trial: trialAttemp12, yearOfPassing: yearOfPassing12, schoolName: schoolName12,
         })
       });
-      const result = await response.json();
-      console.log(result);
+      await response.json();
+      // console.log(result);
     } catch (err) {
       console.log(err);
     }
@@ -372,8 +1130,8 @@ class StudentAdmission extends React.Component {
           resultTypeId, sessionId, courseId, type: '12th result',
         })
       });
-      const result = await response.json();
-      console.log(result);
+      await response.json();
+      // console.log(result);
     } catch (err) {
       console.log(err);
     }
@@ -392,12 +1150,19 @@ class StudentAdmission extends React.Component {
         })
       });
       const result = await response.json();
-      console.log(result);
+      // console.log(result);
       this.setState({ resultTypeId: result.id });
     } catch (err) {
       console.log(err);
     }
-    while(this.state.resultTypeId === '') console.log('waiting');
+    let longWait = 0;
+    while(this.state.resultTypeId === '') {
+      console.log('waiting');
+      if (longWait++ === 150000) {
+        alert('Server is not responding. Some error occurded :(');
+        break;
+      }
+    }
     try {
       const {
         userId, resultTypeId, boardUniversityClg, seatNoClg, subjectName, 
@@ -411,8 +1176,8 @@ class StudentAdmission extends React.Component {
           yearOfPassing: yearOfPassingClg, schoolName: subjectName,
         })
       });
-      const result = await response.json();
-      console.log(result);
+      await response.json();
+      // console.log(result);
     } catch (err) {
       console.log(err);
     }
@@ -427,12 +1192,13 @@ class StudentAdmission extends React.Component {
           resultTypeId, sessionId, courseId, type: 'Previous Exam Result result',
         })
       });
-      const result = await response.json();
-      console.log(result);
+      await response.json();
+      // console.log(result);
     } catch (err) {
       console.log(err);
     }
-    this.clearForm();
+    alert('Admission successful! Thank You!');
+    document.location.reload();
   }
 
   clearForm() {
@@ -442,20 +1208,23 @@ class StudentAdmission extends React.Component {
       subjectChoice: '',
       gender: '', firstName: '', surName: '',
       fatherName: '', motherName: '', grandFatherName: '',
+      profilePicFile: '', signPicFile: '',
       village: '', currState: '', currTaluka: '', currDistrict: '',
       currPinCode: '', phone: '', alternate: '',
       address: '', permState: '', permTaluka: '', permDistrict: '',
       permPinCode: '', email: '', dateOfBirth: '',
-      religion: '', nationality: '', cast: '', status: '', bpl: '',
+      leaveCertificateFile: '',
+      religion: '', nationality: '', cast: '', status: 'Active', bpl: '',
       motherTongue: '', annualIncome: '', handicap: '',
-      bankACNo: '', branchName: '',
-      adharCardNo: '', electionCardNo: '',
+      bankACNo: '', branchName: '', bankPassbookFile: '',
+      adharCardNo: '', electionCardNo: '', adharCardFile: '', electionCardFile: '',
       boardUniversity10: '', seatNo10: '', trialAttemp10: '', schoolName10: '',
-      yearOfPassing10: '',
+      yearOfPassing10: '', resultFile10: '',
       boardUniversity12: '', seatNo12: '', trialAttemp12: '', schoolName12: '',
-      yearOfPassing12: '',
+      yearOfPassing12: '', resultFile12: '',
       boardUniversityClg: '', subjectName: '', examName: '', seatNoClg: '',
-      yearOfPassingClg: '', acceptTermsConditions: false,
+      yearOfPassingClg: '', resultFileClg: '', acceptTermsConditions: false,
+      affidavitFile: '',
     });
   }
 
@@ -467,20 +1236,22 @@ class StudentAdmission extends React.Component {
       subjectChoice,
       gender, firstName, surName,
       fatherName, motherName, grandFatherName,
+      profilePicFile, signPicFile,
       village, currState, currTaluka, currDistrict,
       currPinCode, phone, alternate,
       address, permState, permTaluka, permDistrict,
       permPinCode, email, dateOfBirth,
+      leaveCertificateFile,
       religion, nationality, cast, status, bpl,
       motherTongue, annualIncome, handicap,
-      bankACNo, branchName,
-      adharCardNo, electionCardNo,
+      bankACNo, branchName, bankPassbookFile,
+      adharCardNo, electionCardNo, adharCardFile, electionCardFile,
       boardUniversity10, seatNo10, trialAttemp10, schoolName10,
-      yearOfPassing10,
+      yearOfPassing10, resultFile10,
       boardUniversity12, seatNo12, trialAttemp12, schoolName12,
-      yearOfPassing12,
+      yearOfPassing12, resultFile12,
       boardUniversityClg, subjectName, examName, seatNoClg,
-      yearOfPassingClg, acceptTermsConditions,
+      yearOfPassingClg, resultFileClg, acceptTermsConditions, affidavitFile,
     } = this.state;
     return (
       <>
@@ -511,6 +1282,7 @@ class StudentAdmission extends React.Component {
           motherName={motherName}
           grandFatherName={grandFatherName}
           handleInputChange={this.handleInputChange}
+          handleDocumentChange={this.handleDocumentChange}
         />
         </div>
         <div className="w-full mb-12 px-4">
@@ -548,6 +1320,8 @@ class StudentAdmission extends React.Component {
           annualIncome={annualIncome}
           handicap={handicap}
           handleInputChange={this.handleInputChange}
+          handleDocumentChange={this.handleDocumentChange}
+          handleDateChange={this.handleDateChange}
         />
         </div>
         <div className="w-full mb-12 px-4">
@@ -555,6 +1329,7 @@ class StudentAdmission extends React.Component {
           bankACNo={bankACNo}
           branchName={branchName}
           handleInputChange={this.handleInputChange}
+          handleDocumentChange={this.handleDocumentChange}
         />
         </div>
         <div className="w-full mb-12 px-4">
@@ -562,6 +1337,7 @@ class StudentAdmission extends React.Component {
           adharCardNo={adharCardNo}
           electionCardNo={electionCardNo}
           handleInputChange={this.handleInputChange}
+          handleDocumentChange={this.handleDocumentChange}
         />
         </div>
         <div className="w-full mb-12 px-4">
@@ -572,6 +1348,7 @@ class StudentAdmission extends React.Component {
           schoolName10={schoolName10}
           yearOfPassing10={yearOfPassing10}
           handleInputChange={this.handleInputChange}
+          handleDocumentChange={this.handleDocumentChange}
         />
         </div>
         <div className="w-full mb-12 px-4">
@@ -582,6 +1359,7 @@ class StudentAdmission extends React.Component {
           schoolName12={schoolName12}
           yearOfPassing12={yearOfPassing12}
           handleInputChange={this.handleInputChange}
+          handleDocumentChange={this.handleDocumentChange}
         />
         </div>
         <div className="w-full mb-12 px-4">
@@ -592,6 +1370,7 @@ class StudentAdmission extends React.Component {
           seatNoClg={seatNoClg}
           yearOfPassingClg={yearOfPassingClg}
           handleInputChange={this.handleInputChange}
+          handleDocumentChange={this.handleDocumentChange}
         />
         </div>
         <div className="w-full mb-12 px-4">
@@ -599,6 +1378,7 @@ class StudentAdmission extends React.Component {
           acceptTermsConditions={acceptTermsConditions}
           handleInputChange={this.handleInputChange}
           saveAdmissionData={this.saveAdmissionData}
+          handleDocumentChange={this.handleDocumentChange}
         />
         </div>
       </div>

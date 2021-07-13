@@ -1,5 +1,4 @@
 import React from "react";
-import { Modal } from "react-bootstrap";
 
 // components
 
@@ -37,7 +36,6 @@ export default class Add extends React.Component {
         headers: { "Content-Type": "application/josn" }
       });
       const sessions = await resSess.json();
-      console.log()
       this.setState({ courses, semesters, sessions });
     } catch (err) {
       console.log(err);
@@ -56,7 +54,7 @@ export default class Add extends React.Component {
     const name = e.target.name;
     const value = e.target.value;
     this.setState({[name]: value});
-    console.log(`${name}: ${value}`);
+    // console.log(`${name}: ${value}`);
   }
 
   async createCourseSession() {
@@ -67,8 +65,8 @@ export default class Add extends React.Component {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ courseId, semId, sessionId, status, details })
       });
-      const result = await response.json();
-      console.log(result);
+      await response.json();
+      // console.log(result);
       alert('CourseSession Created Successfully!');
       this.setState({ courseId: '', semId: '', sessionId: '', status: '', details: '' });
       this.props.reload();
@@ -100,8 +98,8 @@ export default class Add extends React.Component {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ courseId, semId, sessionId, status, details })
       });
-      const result = await response.json();
-      console.log(result);
+      await response.json();
+      // console.log(result);
       alert('CourseSession Updated Successfully!');
       this.setState({ courseId: '', semId: '', sessionId: '', status: '', details: '' });
       this.props.reload();

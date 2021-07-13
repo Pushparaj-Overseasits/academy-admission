@@ -59,7 +59,7 @@ class PermanentAddress extends React.Component {
                     <Col>
                       <Form.Group as={Row} controlId="formPlaintextAddress">
                         <Form.Label column sm="5">
-                          Address: *
+                          Address: <span style={{ color: 'red' }}>*</span>
                         </Form.Label>
                         <Col sm="7">
                           <Form.Control
@@ -76,7 +76,7 @@ class PermanentAddress extends React.Component {
                     <Col>
                       <Form.Group as={Row} controlId="formPlaintextPermState">
                         <Form.Label column sm="5">
-                          State: *
+                          State: <span style={{ color: 'red' }}>*</span>
                         </Form.Label>
                         <Col sm="7">
                           <Form.Control
@@ -94,7 +94,7 @@ class PermanentAddress extends React.Component {
                     <Col>
                       <Form.Group as={Row} controlId="formPlaintextPermTalukaName">
                         <Form.Label column sm="5">
-                          Taluka Name: *
+                          Taluka Name: <span style={{ color: 'red' }}>*</span>
                         </Form.Label>
                         <Col sm="7">
                           <Form.Control
@@ -110,7 +110,7 @@ class PermanentAddress extends React.Component {
                     <Col>
                       <Form.Group as={Row} controlId="formPlaintextPermDistrictName">
                         <Form.Label column sm="5">
-                          District Name: *
+                          District Name: <span style={{ color: 'red' }}>*</span>
                         </Form.Label>
                         <Col sm="7">
                           <Form.Control
@@ -128,7 +128,7 @@ class PermanentAddress extends React.Component {
                     <Col>
                       <Form.Group as={Row} controlId="formPlaintextPermPinCode">
                         <Form.Label column sm="5">
-                          Pin Code: *
+                          Pin Code: <span style={{ color: 'red' }}>*</span>
                         </Form.Label>
                         <Col sm="7">
                           <Form.Control
@@ -144,7 +144,7 @@ class PermanentAddress extends React.Component {
                     <Col>
                       <Form.Group as={Row} controlId="formPlaintextEmail">
                         <Form.Label column sm="5">
-                          Email: *
+                          Email: <span style={{ color: 'red' }}>*</span>
                         </Form.Label>
                         <Col sm="7">
                           <Form.Control

@@ -59,7 +59,7 @@ class PreviousExamDetails extends React.Component {
                     <Col>
                       <Form.Group as={Row}>
                         <Form.Label column sm="5">
-                          Board/University: *
+                          Board/University: <span style={{ color: 'red' }}>*</span>
                         </Form.Label>
                         <Col sm="7">
                           <Form.Control
@@ -79,7 +79,7 @@ class PreviousExamDetails extends React.Component {
                     <Col>
                       <Form.Group as={Row} controlId="formPlaintextClgSubjectName">
                         <Form.Label column sm="5">
-                          Subject Name: *
+                          Subject Name: <span style={{ color: 'red' }}>*</span>
                         </Form.Label>
                         <Col sm="7">
                           <Form.Control
@@ -97,16 +97,16 @@ class PreviousExamDetails extends React.Component {
                     <Col>
                       <Form.Group as={Row}>
                         <Form.Label column sm="5">
-                          Exam Name: *
+                          Exam Name: <span style={{ color: 'red' }}>*</span>
                         </Form.Label>
                         <Col sm="7">
                           <Form.Control
                             as="select"
                             name="examName"
                             value={this.props.examName}
-                            onChange={this.handleInputChange}
+                            onChange={this.props.handleInputChange}
                           >
-                            <option value="">-- Select Course --</option>
+                            <option value="">-- Select Exam Name --</option>
                             <option value="none">none</option>
                           </Form.Control>
                         </Col>
@@ -115,7 +115,7 @@ class PreviousExamDetails extends React.Component {
                     <Col>
                       <Form.Group as={Row} controlId="formPlaintextClgSeatNumber">
                         <Form.Label column sm="5">
-                          Seat Number: *
+                          Seat Number: <span style={{ color: 'red' }}>*</span>
                         </Form.Label>
                         <Col sm="7">
                           <Form.Control
@@ -133,7 +133,7 @@ class PreviousExamDetails extends React.Component {
                     <Col>
                       <Form.Group as={Row} controlId="formPlaintextClgYearOfPassing">
                         <Form.Label column sm="5">
-                          Year of Passing: *
+                          Year of Passing: <span style={{ color: 'red' }}>*</span>
                         </Form.Label>
                         <Col sm="7">
                           <Form.Control
@@ -149,14 +149,15 @@ class PreviousExamDetails extends React.Component {
                     <Col>
                       <Form.Group as={Row}>
                         <Form.Label column sm="5">
-                          Result Photo: *
+                          Result Photo: <span style={{ color: 'red' }}>*</span>
                         </Form.Label>
                         <Col sm="7">
                           <Form.File
                             className="position-relative"
                             required
-                            name="file"
+                            name="resultFileClg"
                             feedbackTooltip
+                            onChange={this.props.handleDocumentChange}
                           />
                         </Col>
                       </Form.Group>

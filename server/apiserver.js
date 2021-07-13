@@ -1,4 +1,5 @@
 const express = require('express');
+const fileUpload = require('express-fileupload');
 require('dotenv').config();
 const mongoose = require('mongoose');
 const cookieparser = require('cookie-parser');
@@ -29,6 +30,8 @@ mongoose.connect(DB, {
 
 app.use(express.json());
 app.use(cookieparser());
+app.use(fileUpload());
+app.use(express.static('public'));
 
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', 'http://localhost:3000');

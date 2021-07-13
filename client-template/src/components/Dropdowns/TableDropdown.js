@@ -23,8 +23,8 @@ const NotificationDropdown = (props) => {
           method: 'DELETE',
           headers: { "Content-Type": "application/josn" }
         });
-        const result = await response.json();
-        console.log(result);
+        await response.json();
+        // console.log(result);
         alert(`${props.tbl} deleted successfully!`);
         props.update();
       } catch (error) {

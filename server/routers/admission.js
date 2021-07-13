@@ -1,11 +1,11 @@
 const express = require('express');
-const multer = require('multer');
 const {
   createStudent,
   createAdmission,
   createAddress,
   createBank,
   createDocType,
+  uploadDocument,
   createDocument,
   createDocumentMaster,
   createFeeSubmit,
@@ -17,29 +17,13 @@ const {
 
 const router = express.Router();
 
-// Storage for Documents
-const storage = multer.diskStorage({
-  destination: (req, file, callback) => {
-    callback(null, './public/uploads/documents');
-  },
-  filename: (req, file, callback) => {
-    callback(null, Date.now() + file.originalname);
-  },
-});
-
-const upload = multer({
-  storage,
-  limits: {
-    fileSize: 1024 * 1024 * 3,
-  },
-});
-
 router.route('/create-student').post(createStudent);
 router.route('/create-admission').post(createAdmission);
 router.route('/create-address').post(createAddress);
 router.route('/create-bank').post(createBank);
 router.route('/create-document-type').post(createDocType);
-router.route('/create-document').post(upload.single('file'), createDocument);
+router.route('/upload-document').post(uploadDocument);
+router.route('/create-document').post(createDocument);
 router.route('/create-document-master').post(createDocumentMaster);
 router.route('/create-feesubmit').post(createFeeSubmit);
 router.route('/create-personal').post(createPersonal);

@@ -59,7 +59,7 @@ class StudentDetails extends React.Component {
                     <Col>
                       <Form.Group as={Row}>
                         <Form.Label column sm="5">
-                          Gender: *
+                          Gender: <span style={{ color: 'red' }}>*</span>
                         </Form.Label>
                         <Col sm="7">
                           <Form.Control
@@ -78,7 +78,7 @@ class StudentDetails extends React.Component {
                     <Col>
                       <Form.Group as={Row} controlId="formPlaintextSurname">
                         <Form.Label column sm="5">
-                          Surname: *
+                          Surname: <span style={{ color: 'red' }}>*</span>
                         </Form.Label>
                         <Col sm="7">
                           <Form.Control
@@ -96,7 +96,7 @@ class StudentDetails extends React.Component {
                     <Col>
                       <Form.Group as={Row} controlId="formPlaintextFirstName">
                         <Form.Label column sm="5">
-                          First Name: *
+                          First Name: <span style={{ color: 'red' }}>*</span>
                         </Form.Label>
                         <Col sm="7">
                           <Form.Control
@@ -112,7 +112,7 @@ class StudentDetails extends React.Component {
                     <Col>
                       <Form.Group as={Row} controlId="formPlaintextFathername">
                         <Form.Label column sm="5">
-                          Father Name: *
+                          Father Name: <span style={{ color: 'red' }}>*</span>
                         </Form.Label>
                         <Col sm="7">
                           <Form.Control
@@ -130,7 +130,7 @@ class StudentDetails extends React.Component {
                     <Col>
                       <Form.Group as={Row} controlId="formPlaintextMotherName">
                         <Form.Label column sm="5">
-                          Mother Name: *
+                          Mother Name: <span style={{ color: 'red' }}>*</span>
                         </Form.Label>
                         <Col sm="7">
                           <Form.Control
@@ -146,7 +146,7 @@ class StudentDetails extends React.Component {
                     <Col>
                       <Form.Group as={Row} controlId="formPlaintextGrandFathername">
                         <Form.Label column sm="5">
-                          GrandFather Name: *
+                          GrandFather Name: <span style={{ color: 'red' }}>*</span>
                         </Form.Label>
                         <Col sm="7">
                           <Form.Control
@@ -164,14 +164,15 @@ class StudentDetails extends React.Component {
                     <Col>
                       <Form.Group as={Row}>
                         <Form.Label column sm="5">
-                          Profile Pic: *
+                          Profile Pic: <span style={{ color: 'red' }}>*</span>
                         </Form.Label>
                         <Col sm="7">
                           <Form.File
                             className="position-relative"
                             required
-                            name="file"
+                            name="profilePicFile"
                             feedbackTooltip
+                            onChange={this.props.handleDocumentChange}
                           />
                         </Col>
                       </Form.Group>
@@ -179,14 +180,15 @@ class StudentDetails extends React.Component {
                     <Col>
                       <Form.Group as={Row}>
                         <Form.Label column sm="5">
-                          Signature Pic: *
+                          Signature Pic: <span style={{ color: 'red' }}>*</span>
                         </Form.Label>
                         <Col sm="7">
                           <Form.File
                             className="position-relative"
                             required
-                            name="file"
+                            name="signPicFile"
                             feedbackTooltip
+                            onChange={this.props.handleDocumentChange}
                           />
                         </Col>
                       </Form.Group>

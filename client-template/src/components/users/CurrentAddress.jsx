@@ -59,7 +59,7 @@ class CurrentAddress extends React.Component {
                     <Col>
                       <Form.Group as={Row} controlId="formPlaintextVillage">
                         <Form.Label column sm="5">
-                          Village: *
+                          Village: <span style={{ color: 'red' }}>*</span>
                         </Form.Label>
                         <Col sm="7">
                           <Form.Control
@@ -75,7 +75,7 @@ class CurrentAddress extends React.Component {
                     <Col>
                       <Form.Group as={Row} controlId="formPlaintextCurrState">
                         <Form.Label column sm="5">
-                          State: *
+                          State: <span style={{ color: 'red' }}>*</span>
                         </Form.Label>
                         <Col sm="7">
                           <Form.Control
@@ -93,7 +93,7 @@ class CurrentAddress extends React.Component {
                     <Col>
                       <Form.Group as={Row} controlId="formPlaintextCurrTalukaName">
                         <Form.Label column sm="5">
-                          Taluka Name: *
+                          Taluka Name: <span style={{ color: 'red' }}>*</span>
                         </Form.Label>
                         <Col sm="7">
                           <Form.Control
@@ -109,7 +109,7 @@ class CurrentAddress extends React.Component {
                     <Col>
                       <Form.Group as={Row} controlId="formPlaintextCurrDistrictName">
                         <Form.Label column sm="5">
-                          District Name: *
+                          District Name: <span style={{ color: 'red' }}>*</span>
                         </Form.Label>
                         <Col sm="7">
                           <Form.Control
@@ -127,7 +127,7 @@ class CurrentAddress extends React.Component {
                     <Col>
                       <Form.Group as={Row} controlId="formPlaintextCurrPinCode">
                         <Form.Label column sm="5">
-                          Pin Code: *
+                          Pin Code: <span style={{ color: 'red' }}>*</span>
                         </Form.Label>
                         <Col sm="7">
                           <Form.Control
@@ -145,7 +145,7 @@ class CurrentAddress extends React.Component {
                     <Col>
                       <Form.Group as={Row} controlId="formPlaintextPhoneNumber">
                         <Form.Label column sm="5">
-                          Phone Number: *
+                          Phone Number: <span style={{ color: 'red' }}>*</span>
                         </Form.Label>
                         <Col sm="7">
                           <Form.Control
@@ -161,7 +161,7 @@ class CurrentAddress extends React.Component {
                     <Col>
                       <Form.Group as={Row} controlId="formPlaintextAlternativeNumber">
                         <Form.Label column sm="5">
-                          Alternative Number: *
+                          Alternative Number: <span style={{ color: 'red' }}>*</span>
                         </Form.Label>
                         <Col sm="7">
                           <Form.Control

@@ -18,7 +18,6 @@ export default function Login() {
     if (response.status === 400 || !result) {
       alert('Invalid Credentials');
     } else {
-      alert('User Login successfully!');
       history.push('/admin/dashboard');
     }
   };

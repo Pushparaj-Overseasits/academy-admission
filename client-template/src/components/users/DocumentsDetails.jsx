@@ -59,7 +59,7 @@ class DocumentsDetails extends React.Component {
                     <Col>
                       <Form.Group as={Row} controlId="formPlaintextAdharCardNumber">
                         <Form.Label column sm="5">
-                          Adhar Card Number : *
+                          Adhar Card Number : <span style={{ color: 'red' }}>*</span>
                         </Form.Label>
                         <Col sm="7">
                           <Form.Control
@@ -75,7 +75,7 @@ class DocumentsDetails extends React.Component {
                     <Col>
                       <Form.Group as={Row} controlId="formPlaintextElectionCardNumber">
                         <Form.Label column sm="5">
-                          Election Card Number: *
+                          Election Card Number: <span style={{ color: 'red' }}>*</span>
                         </Form.Label>
                         <Col sm="7">
                           <Form.Control
@@ -93,14 +93,15 @@ class DocumentsDetails extends React.Component {
                     <Col>
                       <Form.Group as={Row}>
                         <Form.Label column sm="5">
-                          Adhar Card Photo: *
+                          Adhar Card Photo: <span style={{ color: 'red' }}>*</span>
                         </Form.Label>
                         <Col sm="7">
                           <Form.File
                             className="position-relative"
                             required
-                            name="file"
+                            name="adharCardFile"
                             feedbackTooltip
+                            onChange={this.props.handleDocumentChange}
                           />
                         </Col>
                       </Form.Group>
@@ -108,14 +109,15 @@ class DocumentsDetails extends React.Component {
                     <Col>
                       <Form.Group as={Row}>
                         <Form.Label column sm="5">
-                          Election Card Photo: *
+                          Election Card Photo: <span style={{ color: 'red' }}>*</span>
                         </Form.Label>
                         <Col sm="7">
                           <Form.File
                             className="position-relative"
                             required
-                            name="file"
+                            name="electionCardFile"
                             feedbackTooltip
+                            onChange={this.props.handleDocumentChange}
                           />
                         </Col>
                       </Form.Group>

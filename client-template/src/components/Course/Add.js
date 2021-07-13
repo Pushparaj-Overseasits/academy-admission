@@ -14,7 +14,7 @@ export default class Add extends React.Component {
     const name = e.target.name;
     const value = e.target.value;
     this.setState({[name]: value});
-    console.log(`${name}: ${value}`);
+    // console.log(`${name}: ${value}`);
   }
 
   async createCourse() {
@@ -25,8 +25,8 @@ export default class Add extends React.Component {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name: name, status: status, type: type })
       });
-      const result = await response.json();
-      console.log(result);
+      await response.json();
+      // console.log(result);
       alert('Course Created Successfully!');
       this.setState({ name: '', status: '', type: '' });
       this.props.reload();
@@ -58,8 +58,8 @@ export default class Add extends React.Component {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name: name, status: status, type: type })
       });
-      const result = await response.json();
-      console.log(result);
+      await response.json();
+      // console.log(result);
       alert('Course Updated Successfully!');
       this.setState({ name: '', status: '', type: '' });
       this.props.reload();

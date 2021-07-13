@@ -2,9 +2,11 @@ import React from 'react';
 import {
   Card, Form, Row, Col, Container,
 } from 'react-bootstrap';
+import DatePicker from 'react-datepicker';
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
 import IconButton from '@material-ui/core/IconButton';
+import 'react-datepicker/dist/react-datepicker.css'
 
 /* eslint-disable-next-line react/prefer-stateless-function */
 class PersonalDetails extends React.Component {
@@ -59,15 +61,24 @@ class PersonalDetails extends React.Component {
                     <Col>
                       <Form.Group as={Row} controlId="formPlaintextDOB">
                         <Form.Label column sm="5">
-                          Date Of Birth: *
+                          Date Of Birth: <span style={{ color: 'red' }}>*</span>
                         </Form.Label>
                         <Col sm="7">
-                          <Form.Control
-                            name="dateOfBirth"
-                            value={this.props.dateOdBirth}
-                            onChange={this.props.handleInputChange}
-                            type="text"
-                            placeholder="Date Of Birth (DD-MM-YYYY)"
+                          <DatePicker
+                            selected={this.props.dateOfBirth}
+                            onChange={this.props.handleDateChange}
+                            dateFormat='dd/MM/yyyy'
+                            isClearable
+                            showYearDropdown
+                            scrollableMonthYearDropdown
+                            customInput={
+                              <Form.Control
+                                name="dateOfBirth"
+                                id="dateOfBirth"
+                                type="text"
+                                placeholder="Date Of Birth (DD-MM-YYYY)"
+                              />
+                            }
                           />
                         </Col>
                       </Form.Group>
@@ -75,14 +86,15 @@ class PersonalDetails extends React.Component {
                     <Col>
                       <Form.Group as={Row}>
                         <Form.Label column sm="5">
-                          Leave certificate: *
+                          Leave certificate: <span style={{ color: 'red' }}>*</span>
                         </Form.Label>
                         <Col sm="7">
                           <Form.File
                             className="position-relative"
                             required
-                            name="file"
+                            name="leaveCertificateFile"
                             feedbackTooltip
+                            onChange={this.props.handleDocumentChange}
                           />
                         </Col>
                       </Form.Group>
@@ -92,7 +104,7 @@ class PersonalDetails extends React.Component {
                     <Col>
                       <Form.Group as={Row} controlId="formPlaintextReligious">
                         <Form.Label column sm="5">
-                          Religious: *
+                          Religious: <span style={{ color: 'red' }}>*</span>
                         </Form.Label>
                         <Col sm="7">
                           <Form.Control
@@ -108,7 +120,7 @@ class PersonalDetails extends React.Component {
                     <Col>
                       <Form.Group as={Row} controlId="formPlaintextNationality">
                         <Form.Label column sm="5">
-                          Nationality: *
+                          Nationality: <span style={{ color: 'red' }}>*</span>
                         </Form.Label>
                         <Col sm="7">
                           <Form.Control
@@ -126,7 +138,7 @@ class PersonalDetails extends React.Component {
                     <Col>
                       <Form.Group as={Row}>
                         <Form.Label column sm="5">
-                          Select Cast: *
+                          Select Cast: <span style={{ color: 'red' }}>*</span>
                         </Form.Label>
                         <Col sm="7">
                           <Form.Control
@@ -145,9 +157,9 @@ class PersonalDetails extends React.Component {
                       </Form.Group>
                     </Col>
                     <Col>
-                      <Form.Group as={Row}>
+                      {/* <Form.Group as={Row}>
                         <Form.Label column sm="5">
-                          Select Status: *
+                          Select Status: <span style={{ color: 'red' }}>*</span>
                         </Form.Label>
                         <Col sm="7">
                           <Form.Control
@@ -158,14 +170,14 @@ class PersonalDetails extends React.Component {
                             placeholder="Status"
                           />
                         </Col>
-                      </Form.Group>
+                      </Form.Group> */}
                     </Col>
                   </Row>
                   <Row xs={1} sm={1} md={2}>
                     <Col>
                       <Form.Group as={Row}>
                         <Form.Label column sm="5">
-                          BPL Card: *
+                          BPL Card: <span style={{ color: 'red' }}>*</span>
                         </Form.Label>
                         <Col sm="7">
                           <Form.Control
@@ -184,7 +196,7 @@ class PersonalDetails extends React.Component {
                     <Col>
                       <Form.Group as={Row} controlId="formPlaintextMotherTongue">
                         <Form.Label column sm="5">
-                          Mother Tongue: *
+                          Mother Tongue: <span style={{ color: 'red' }}>*</span>
                         </Form.Label>
                         <Col sm="7">
                           <Form.Control
@@ -202,7 +214,7 @@ class PersonalDetails extends React.Component {
                     <Col>
                       <Form.Group as={Row} controlId="formPlaintextAnnualIncome">
                         <Form.Label column sm="5">
-                          Annual Income: *
+                          Annual Income: <span style={{ color: 'red' }}>*</span>
                         </Form.Label>
                         <Col sm="7">
                           <Form.Control
@@ -218,7 +230,7 @@ class PersonalDetails extends React.Component {
                     <Col>
                       <Form.Group as={Row}>
                         <Form.Label column sm="5">
-                          You Handicap ?: *
+                          You Handicap ?: <span style={{ color: 'red' }}>*</span>
                         </Form.Label>
                         <Col sm="7">
                           <Form.Control

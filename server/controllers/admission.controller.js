@@ -75,10 +75,35 @@ const createDocType = async (req, res) => {
   }
 };
 
+const uploadDocument = async (req, res) => {
+  try {
+    if (req.files === null) {
+      res.status(400).json({ message: 'No file uploaded' });
+      return;
+    }
+    const { file } = req.files;
+    const date = new Date(Date.now());
+    const [month, day, year] = [date.getMonth() + 1, date.getDate(), date.getFullYear()];
+    const [hour, minutes, seconds] = [date.getHours(), date.getMinutes(), date.getSeconds()];
+    const fileName = `${day}-${month}-${year}_${hour}-${minutes}-${seconds}_${file.name}`;
+    // console.log(fileName);
+    file.mv(`${__dirname}/../public/uploads/documents/${fileName}`, (err) => {
+      if (err) {
+        console.log(err);
+        res.status(500).send(err);
+      } else {
+        res.json({ fileName, message: 'Uploaded Successfully!' });
+      }
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).send(err);
+  }
+};
+
 const createDocument = async (req, res) => {
   try {
     req.body.id = mongoose.Types.ObjectId();
-    req.url = req.file.filename;
     const createdDocument = new DocumentModel(req.body);
     await createdDocument.save();
     res.status(200).send(createdDocument);
@@ -170,6 +195,7 @@ module.exports = {
   createAddress,
   createBank,
   createDocType,
+  uploadDocument,
   createDocument,
   createDocumentMaster,
   createFeeSubmit,

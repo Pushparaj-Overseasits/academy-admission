@@ -28,7 +28,7 @@ export default class CourseAndSession extends React.Component
         headers: { "Content-Type": "application/josn" }
       });
       result = await response.json();
-      console.log(result);
+      // console.log(result);
     } catch (error) {
       console.log(error);
     }

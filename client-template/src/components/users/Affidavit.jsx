@@ -27,8 +27,9 @@ class Affidavit extends React.Component {
                     <Form.File
                       className="position-relative"
                       required
-                      name="file"
+                      name="affidavitFile"
                       feedbackTooltip
+                      onChange={this.props.handleDocumentChange}
                     />
                   </Col>
                   <Col sm="6">

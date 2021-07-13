@@ -62,7 +62,7 @@ class TwelfthExamDetails extends React.Component {
                     <Col>
                       <Form.Group as={Row}>
                         <Form.Label column sm="5">
-                          Board/University: *
+                          Board/University: <span style={{ color: 'red' }}>*</span>
                         </Form.Label>
                         <Col sm="7">
                           <Form.Control
@@ -82,7 +82,7 @@ class TwelfthExamDetails extends React.Component {
                     <Col>
                       <Form.Group as={Row} controlId="formPlaintextTwelfthSeatNumber">
                         <Form.Label column sm="5">
-                          Sear Number: *
+                          Sear Number: <span style={{ color: 'red' }}>*</span>
                         </Form.Label>
                         <Col sm="7">
                           <Form.Control
@@ -100,7 +100,7 @@ class TwelfthExamDetails extends React.Component {
                     <Col>
                       <Form.Group as={Row}>
                         <Form.Label column sm="5">
-                          Trial Attempt: *
+                          Trial Attempt: <span style={{ color: 'red' }}>*</span>
                         </Form.Label>
                         <Col sm="7">
                           <Form.Control
@@ -122,7 +122,7 @@ class TwelfthExamDetails extends React.Component {
                     <Col>
                       <Form.Group as={Row} controlId="formPlaintextTwelfthSchoolName">
                         <Form.Label column sm="5">
-                          School Name: *
+                          School Name: <span style={{ color: 'red' }}>*</span>
                         </Form.Label>
                         <Col sm="7">
                           <Form.Control
@@ -140,7 +140,7 @@ class TwelfthExamDetails extends React.Component {
                     <Col>
                       <Form.Group as={Row} controlId="formPlaintextTwelfthYearOfPassing">
                         <Form.Label column sm="5">
-                          Year of Passing: *
+                          Year of Passing: <span style={{ color: 'red' }}>*</span>
                         </Form.Label>
                         <Col sm="7">
                           <Form.Control
@@ -156,14 +156,15 @@ class TwelfthExamDetails extends React.Component {
                     <Col>
                       <Form.Group as={Row}>
                         <Form.Label column sm="5">
-                          Result Photo: *
+                          Result Photo: <span style={{ color: 'red' }}>*</span>
                         </Form.Label>
                         <Col sm="7">
                           <Form.File
                             className="position-relative"
                             required
-                            name="file"
+                            name="resultFile12"
                             feedbackTooltip
+                            onChange={this.props.handleDocumentChange}
                           />
                         </Col>
                       </Form.Group>

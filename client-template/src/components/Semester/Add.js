@@ -24,8 +24,8 @@ export default class Add extends React.Component {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name: name, status: status, type: type })
       });
-      const result = await response.json();
-      console.log(result);
+      await response.json();
+      // console.log(result);
       alert('Semester Created Successfully!');
       this.setState({ name: '', status: '', type: '' });
       this.props.reload();
@@ -57,8 +57,8 @@ export default class Add extends React.Component {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name: name, status: status, type: type })
       });
-      const result = await response.json();
-      console.log(result);
+      await response.json();
+      // console.log(result);
       alert('Semester Updated Successfully!');
       this.setState({ name: '', status: '', type: '' });
       this.props.reload();

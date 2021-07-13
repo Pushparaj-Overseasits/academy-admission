@@ -14,12 +14,12 @@ class Header extends React.Component {
                   <h1 className="text-white font-semibold text-5xl">
                   Smt. RM Prajapati Arts 
                   </h1>
-                  <p className="mt-4 text-lg text-blueGray-200">
+                  <div className="mt-4 text-lg text-blueGray-200">
                 
           <h5>Ambaji Highway, At-Po-Ta-Satlasana, Meshana-384330, Gujarat, India</h5>
           <h5>Contact Us: (02761) 259233, 253540. Mobile: 09426362329</h5>
           <h5>Email: artscollegsatlasana@gmail.com</h5>
-                  </p>
+                  </div>
                 </div>
               </div>
             </div>

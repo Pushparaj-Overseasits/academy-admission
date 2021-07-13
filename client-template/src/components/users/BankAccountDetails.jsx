@@ -60,7 +60,7 @@ class BankAccountDetails extends React.Component {
                     <Col>
                       <Form.Group as={Row} controlId="formPlaintextBankACNo">
                         <Form.Label column sm="5">
-                          Bank A/C No. : *
+                          Bank A/C No. : <span style={{ color: 'red' }}>*</span>
                         </Form.Label>
                         <Col sm="7">
                           <Form.Control
@@ -76,7 +76,7 @@ class BankAccountDetails extends React.Component {
                     <Col>
                       <Form.Group as={Row} controlId="formPlaintextBranchName">
                         <Form.Label column sm="5">
-                          Branch Name: *
+                          Branch Name: <span style={{ color: 'red' }}>*</span>
                         </Form.Label>
                         <Col sm="7">
                           <Form.Control
@@ -94,14 +94,15 @@ class BankAccountDetails extends React.Component {
                     <Col>
                       <Form.Group as={Row}>
                         <Form.Label column sm="6">
-                          Upload Bank Passbook Photo: *
+                          Upload Bank Passbook Photo: <span style={{ color: 'red' }}>*</span>
                         </Form.Label>
                         <Col sm="6">
                           <Form.File
                             className="position-relative"
                             required
-                            name="file"
+                            name="bankPassbookFile"
                             feedbackTooltip
+                            onChange={this.props.handleDocumentChange}
                           />
                         </Col>
                       </Form.Group>
