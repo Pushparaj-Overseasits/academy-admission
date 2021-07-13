@@ -59,7 +59,7 @@ Therefore the aim is to get the code from the git repository to run on the devel
 
 ```cd Academy-Admission```
 
-**Clone the repository from GitLab :**  
+**Clone the repository from GitHub :**  
 
 ```git clone https://github.com/Pushparaj-Overseasits/academy-admission.git```
 
@@ -133,4 +133,6 @@ Please ensure this file is updated incase any package is added / removed.
 
 ---
 **Note for future developers**
-The Way in which the Student List section of Admin displays the details of Students in not very great UI.
+
+The Document Upload during student(user) admission is not working correctly.
+The Admin's Student List View has a View button which when clicked should show all the details of the student.
